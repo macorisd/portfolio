@@ -1,0 +1,88 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.pageTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  background: #edebf6;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+.cardContent {
+  padding: 1.5rem;
+  flex: 1;
+}
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.meta {
+  font-size: 0.875rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+.venue,
+.authorLink,
+.groupLink {
+  color: #1366ff;
+  text-decoration: none;
+}
+.venue:hover,
+.authorLink:hover,
+.groupLink:hover {
+  text-decoration: underline;
+}
+.authors {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.authorName {
+  color: #333;
+}
+.group {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+.groupName {
+  color: #333;
+}
+.abstract {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #444;
+}
+.pdfButton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-top: 0.7rem;
+  border-radius: 8px;
+  background: #b93434;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.pdfButton:hover {
+  color: #fff;
+}
+.abstractContainer {
+  border-left: 4px solid #a099be;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+  text-align: justify;
+}

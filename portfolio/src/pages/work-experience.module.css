@@ -1,0 +1,74 @@
+.timelineContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.pageTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  margin-top: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #ddd;
+}
+.companySection {
+  margin-bottom: 3rem;
+}
+.companyName {
+  font-size: 1.75rem;
+  margin: 1rem 0;
+  margin-left: 40px;
+  color: #333;
+}
+.timelineItem {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timelineDot {
+  position: absolute;
+  left: -26px;
+  width: 16px;
+  height: 16px;
+  background: #1366ff;
+  border-radius: 50%;
+  top: 6px;
+}
+.timelineContent {
+  margin-left: 40px;
+}
+.positionTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.date {
+  font-size: 0.875rem;
+  color: #777;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.description {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.techBadge {
+  background: #f1f1f1;
+  border-radius: 12px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}

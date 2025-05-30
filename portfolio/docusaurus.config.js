@@ -81,22 +81,30 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Macorís Decena',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Your Logo',
+          src: 'img/profile.jpg',
         },
         items: [
+          { to: '/education', label: 'Education', position: 'left' },
+          { to: '/work-experience', label: 'Work Experience', position: 'left' },
+          { to: '/articles', label: 'Published Articles', position: 'left' },
+          { to: '/skills', label: 'Skills', position: 'left' },
+          { to: '/projects', label: 'Featured Projects', position: 'left' },
+          { to: '/awards', label: 'Awards', position: 'left' },
+          { to: '/certifications', label: 'Certifications', position: 'left' },
+
+          // Right
+          { to: '/contact', label: 'Contact', position: 'right' },
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/macorisd',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'https://www.linkedin.com/in/macorisd',
+            label: 'LinkedIn',
             position: 'right',
           },
         ],
@@ -105,46 +113,28 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Portfolio',
             items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
+              { label: 'Home', to: '/' },
+              { label: 'Projects', to: '/projects' },
+              { label: 'Skills', to: '/skills' },
             ],
           },
           {
-            title: 'Community',
+            title: 'Social',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
+              { label: 'GitHub', href: 'https://github.com/yourusername' },
+              { label: 'LinkedIn', href: 'https://linkedin.com/in/yourprofile' },
             ],
           },
           {
-            title: 'More',
+            title: 'Contact',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
+              { label: 'Email', href: 'mailto:your.email@example.com' },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Thanks for visiting my portfolio!`,
       },
       prism: {
         theme: prismThemes.github,
