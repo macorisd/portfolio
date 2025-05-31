@@ -2,17 +2,46 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
+  margin-bottom: 3rem;
 }
+
 .pageTitle {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 4rem;
+  background: linear-gradient(
+    90deg,
+    #67b99a 0%,
+    #6fc267 25%,
+    #248277 50%,
+    #56ab91 75%,
+    #67b99a 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 6s ease infinite;
 }
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .timeline {
   position: relative;
   padding-left: 40px;
   margin-top: 2rem;
 }
+
 .timeline::before {
   content: '';
   position: absolute;
@@ -22,52 +51,76 @@
   width: 4px;
   background: #ddd;
 }
+
 .companySection {
   margin-bottom: 3rem;
 }
+
 .companyName {
   font-size: 1.75rem;
   margin: 1rem 0;
   margin-left: 40px;
   color: #333;
+  transition: color 0.2s ease;
 }
+
+.companyNameLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.companyNameLink:hover {
+  text-decoration: none;
+}
+
+.companyNameLink:hover .companyName {
+  color: #56ab91;
+}
+
 .timelineItem {
   position: relative;
   margin-bottom: 2rem;
 }
+
 .timelineDot {
   position: absolute;
   left: -26px;
   width: 16px;
   height: 16px;
-  background: #1366ff;
+  background: #56ab91;
   border-radius: 50%;
   top: 6px;
 }
+
 .timelineContent {
   margin-left: 40px;
 }
+
 .positionTitle {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
+
 .date {
   font-size: 0.875rem;
   color: #777;
   display: block;
   margin-bottom: 0.75rem;
 }
+
 .description {
   font-size: 1rem;
   margin-bottom: 0.75rem;
 }
+
 .techList {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
 .techBadge {
-  background: #f1f1f1;
+  background: #e2e2e2;
   border-radius: 12px;
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;

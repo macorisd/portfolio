@@ -6,6 +6,7 @@ import styles from './work-experience.module.css';
 const workExperience = [
   {
     company: 'MAPIR UMA',
+    url: 'https://mapir.isa.uma.es/',
     positions: [
       {
         title: 'Research Intern',
@@ -18,6 +19,7 @@ const workExperience = [
   },
   {
     company: 'Plytix',
+    url: 'https://www.plytix.com/',
     positions: [
       {
         title: 'Software Engineer Intern',
@@ -34,11 +36,16 @@ export default function WorkExperience() {
   return (
     <Layout title="Work Experience">
       <main className={styles.timelineContainer}>
-        <h1 className={styles.pageTitle}>Work Experience</h1>
-        <div className={styles.timeline}>
+        <h1 className={styles.pageTitle}>Work Experience</h1>        <div className={styles.timeline}>
           {workExperience.map((company, index) => (
             <div key={index} className={styles.companySection}>
-              <h2 className={styles.companyName}>{company.company}</h2>
+              {company.url ? (
+                <a href={company.url} target="_blank" rel="noopener" className={styles.companyNameLink}>
+                  <h2 className={styles.companyName}>{company.company}</h2>
+                </a>
+              ) : (
+                <h2 className={styles.companyName}>{company.company}</h2>
+              )}
               {company.positions.map((pos, idx) => (
                 <div key={idx} className={styles.timelineItem}>
                   <div className={styles.timelineDot} />
