@@ -12,7 +12,7 @@ export default function Home() {
         />
         <h1 style={{ fontSize: '3rem', margin: '2rem 0 1rem' }}>Macorís Decena</h1>
         <p style={{ fontSize: '1.5rem', textAlign: 'center', maxWidth: 600 }}>
-          Hi! I'm a 21-year-old software engineer interested in research and development
+          Hi! I'm a 21-year-old Software Engineer interested in research and development
           of AI and Computer Vision systems, as well as backend development. I am
           passionate about facing complex problems and using my creativity to solve them.
         </p>
