@@ -3,9 +3,9 @@ import Layout from '@theme/Layout';
 
 export default function Awards() {
   return (
-    <Layout title="Awards">
+    <Layout title="Awards and Achievements">
       <main style={{ maxWidth: 800, margin: '0 auto', padding: '2rem' }}>
-        <h1>Awards</h1>
+        <h1>Awards and Achievements</h1>
         <ul>
           <li>
             <strong>Best Innovation Award</strong> – Tech Conference 2024<br />

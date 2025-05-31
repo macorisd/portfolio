@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
+  title: 'Macorís Decena',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'macorisd', // Usually your GitHub org/user name.
+  projectName: 'portfolio', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -92,7 +92,7 @@ const config = {
           { to: '/articles', label: 'Published Articles', position: 'left' },
           { to: '/skills', label: 'Skills', position: 'left' },
           { to: '/projects', label: 'Featured Projects', position: 'left' },
-          { to: '/awards', label: 'Awards', position: 'left' },
+          { to: '/awards', label: 'Awards and Achievements', position: 'left' },
           { to: '/certifications', label: 'Certifications', position: 'left' },
 
           // Right
