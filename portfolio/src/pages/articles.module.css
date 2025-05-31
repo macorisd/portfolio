@@ -3,86 +3,167 @@
   margin: 0 auto;
   padding: 2rem;
 }
+
 .pageTitle {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
+  background: linear-gradient(
+    90deg,
+    #8a3fda 0%,
+    rgb(156, 93, 208) 25%,
+    rgb(201, 153, 229) 50%,
+    rgb(170, 122, 200) 75%,
+    #8a3fda 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 6s ease infinite;
 }
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .cardContainer {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-bottom: 3rem;
 }
+
 .card {
   display: flex;
   flex-direction: row;
-  background: #edebf6;
+  background: linear-gradient(
+    135deg,
+    #e3e0f9 0%,     /* lavanda claro */
+    #d3d1f3 25%,    /* violeta grisáceo */
+    #c9d8f6 50%,    /* azul hielo pastel */
+    #d8d3f6 75%,    /* lavanda azulada */
+    #e3e0f9 100%    /* ciclo completo */
+  );
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(123, 31, 162, 0.1);
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(123, 31, 162, 0.15);
+}
+
 .cardContent {
   padding: 1.5rem;
   flex: 1;
 }
+
 .title {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 .meta {
   font-size: 0.875rem;
   color: #777;
   margin-bottom: 1rem;
 }
+
 .venue,
 .authorLink,
 .groupLink {
   color: #1366ff;
   text-decoration: none;
 }
+
 .venue:hover,
 .authorLink:hover,
 .groupLink:hover {
   text-decoration: underline;
 }
+
 .authors {
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
 }
+
 .authorName {
   color: #333;
 }
+
 .group {
   font-size: 0.875rem;
   margin-bottom: 1rem;
   color: #555;
 }
+
 .groupName {
   color: #333;
 }
+
+.abstractContainer {
+  border-left: 4px solid #9c8bb3;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+  text-align: justify;
+  margin-bottom: 0.8rem;
+}
+
 .abstract {
   font-size: 1rem;
-  margin-bottom: 0.8rem;
   color: #444;
+  line-height: 1.5;
 }
-.pdfButton {
-  display: inline-block;
+
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pdfButton,
+.customButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem 1rem;
-  margin-top: 0.7rem;
   border-radius: 8px;
-  background: #b93434;
   color: #fff;
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
+.pdfButton {
+  background-color: #b93434;
+}
+
 .pdfButton:hover {
   color: #fff;
+  background-color: #9f2d2d;
+  transform: translateY(-1px);
 }
-.abstractContainer {
-  border-left: 4px solid #a099be;
-  padding-left: 1rem;
-  padding-right: 1.5rem;
-  text-align: justify;
+
+.customButton:hover {
+  color: #fff;
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+}
+
+.customButton:active {
+  transform: translateY(0);
 }
