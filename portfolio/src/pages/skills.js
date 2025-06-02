@@ -101,7 +101,7 @@ export default function Skills() {
   return (
     <Layout title="Skills">
       <main className={styles.container}>
-        <h1 className={styles.pageTitle}>Technical Skills</h1>
+        <h1 className={styles.pageTitle}>Skills</h1>
         
         <div className={styles.skillsContainer}>
           {Object.entries(skillsData).map(([category, skills]) => (
