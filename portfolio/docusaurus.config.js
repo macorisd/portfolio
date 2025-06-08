@@ -79,7 +79,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/profile.jpg',
       navbar: {
         title: 'Macorís Decena',
         logo: {
@@ -113,24 +113,29 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Portfolio',
+            title: 'Education & Experience',
             items: [
               { label: 'Home', to: '/' },
-              { label: 'Projects', to: '/projects' },
+              { label: 'Education', to: '/education' },
+              { label: 'Work Experience', to: '/work-experience' },
+              { label: 'Published Papers', to: '/papers' },
+            ],
+          },
+          {
+            title: 'Projects & Expertise',
+            items: [
               { label: 'Skills', to: '/skills' },
+              { label: 'Featured Projects', to: '/projects' },
+              { label: 'Awards and Achievements', to: '/awards' },
+              { label: 'Certifications', to: '/certifications' },
             ],
           },
           {
-            title: 'Social',
+            title: 'Social & Contact',
             items: [
-              { label: 'GitHub', href: 'https://github.com/yourusername' },
-              { label: 'LinkedIn', href: 'https://linkedin.com/in/yourprofile' },
-            ],
-          },
-          {
-            title: 'Contact',
-            items: [
-              { label: 'Email', href: 'mailto:your.email@example.com' },
+              { label: 'GitHub', href: 'https://github.com/macorisd' },
+              { label: 'LinkedIn', href: 'https://linkedin.com/in/macorisd' },
+              { label: 'Email', href: 'mailto:macorisd@gmail.com' },
             ],
           },
         ],
