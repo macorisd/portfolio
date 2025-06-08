@@ -37,6 +37,7 @@ const skillsData = {
     { name: 'Kubernetes', level: 40 },
     { name: 'Vercel', level: 80 },
     { name: 'ROS2', level: 50 },
+    { name: 'Generative AI', level: 90 },
     { name: 'VS Code', level: 95 },
     { name: 'Android Studio', level: 70 },
     { name: 'Unity', level: 40 },
