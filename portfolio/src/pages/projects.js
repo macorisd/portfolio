@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from '../css/projects.module.css';
 
 const projects = [  {
@@ -64,6 +65,7 @@ const projects = [  {
 ];
 
 function ProjectCard({ project }) {
+  const imgUrl = useBaseUrl(project.image);
   const handleCardClick = () => {
     if (project.githubUrl) {
       window.open(project.githubUrl, '_blank', 'noopener,noreferrer');
@@ -73,7 +75,7 @@ function ProjectCard({ project }) {
   return (
     <div className={styles.card} onClick={handleCardClick}>
       <div className={styles.imageWrapper}>
-        <img src={project.image} alt={project.title} className={styles.image} />
+        <img src={imgUrl} alt={project.title} className={styles.image} />
       </div>
       <div className={styles.cardContent}>
         <div className={styles.header}>

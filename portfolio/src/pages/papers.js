@@ -12,7 +12,7 @@ const papers = [
       url: 'https://arm.ual.es/rbvm/',
     },
     authors: [
-      { name: 'Decena-Gimenez, M.', url: '/' },
+      { name: 'Decena-Gimenez, M.', url: 'https://macorisd.github.io/portfolio/' },
       { name: 'Moncada-Ramirez, J.', url: null },
       { name: 'Ruiz-Sarmiento, J.R.', url: 'https://mapir.isa.uma.es/mapirwebsite/?p=1366' },
       { name: 'Gonzalez-Jimenez, J.', url: 'https://mapir.isa.uma.es/mapirwebsite/?p=1536' },
@@ -32,7 +32,7 @@ const papers = [
     the-art technologies. Qualitative evaluations demonstrate that TALOS correctly identifies
     and segments objects from categories beyond COCO, outperforming Detectron2 in semantic
     richness and mask quality, especially in complex scenes.`,
-    pdfUrl: 'pdf/paper_simposio_almeria.pdf',
+    pdfUrl: 'https://macorisd.github.io/portfolio/pdf/paper_simposio_almeria.pdf',
     customButtons: [
       {
         text: 'Publication',
