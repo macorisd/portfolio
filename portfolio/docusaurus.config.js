@@ -89,7 +89,7 @@ const config = {
         items: [
           { to: '/education', label: 'Education', position: 'left' },
           { to: '/work-experience', label: 'Work Experience', position: 'left' },
-          { to: '/articles', label: 'Published Articles', position: 'left' },
+          { to: '/papers', label: 'Published Papers', position: 'left' },
           { to: '/skills', label: 'Skills', position: 'left' },
           { to: '/projects', label: 'Featured Projects', position: 'left' },
           { to: '/awards', label: 'Awards and Achievements', position: 'left' },
@@ -139,6 +139,10 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+      },
+      colorMode: {
+        disableSwitch: true,
+        defaultMode: 'light',
       },
     }),
 };

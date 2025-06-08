@@ -1,6 +1,22 @@
-import React from 'react';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
+
+const newsData = [
+  {
+    title: 'Presentation at RBVM Symposium (Almería 2025): Semantic Instance Segmentation using an Open-Vocabulary',
+    description: `I had the opportunity to present my research at the RBVM Symposium organized in Almería, Spain
+    by the Spanish Committee of Automation, in the Computer Vision category. I introduced TALOS, the system I
+    developed for open-vocabulary semantic instance segmentation, and shared the methodology and results detailed
+    in my paper.`,
+    date: 'Jun 2025',
+    image: '/img/simposio_almeria_news.jpg',
+    customButtons: [
+      { text: 'Symposium Website', color: '#72c28e', url: 'https://arm.ual.es/rbvm/' },
+      { text: 'Paper PDF', color: '#b93434', url: '/pdf/paper_simposio_almeria.pdf' },
+      // { text: 'LinkedIn Post', color: '#0a66c2', url: 'https://linkedin.com/in/example' },
+    ],
+  },
+];
 
 export default function Home() {
   return (
@@ -13,32 +29,85 @@ export default function Home() {
             style={{ borderRadius: '50%', width: '200px', height: '200px', objectFit: 'cover', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
           />
           <h1 style={{ fontSize: '3rem', margin: '2rem 0 1rem' }}>Macorís Decena</h1>
-          <p style={{ fontSize: '1.5rem', textAlign: 'center', maxWidth: 600 }}>
-            Hi! I'm a 21-year-old Software Engineer interested in research and development
+          <p style={{ fontSize: '1.5rem', textAlign: 'center', maxWidth: 800, marginBottom: '2.5rem' }}>
+            Hi! I'm a 21-year-old Software Engineer from Spain, interested in research and development
             of AI and Computer Vision systems, as well as backend development. I am
             passionate about facing complex problems and using my creativity to solve them.
+            As a native Spanish speaker with a C1 level in English, I can communicate fluently in
+            international environments.
           </p>
 
-          <section style={{ width: '100%', maxWidth: 900, margin: '3rem auto' }}>
-            <h2>Latest News</h2>
-            <ul>
-              <li><b>[2025-05]</b> Started a new role at [Company Name] as [Position].</li>
-              <li><b>[2024-11]</b> Published an article on [Tech Blog].</li>
-              <li><b>[2024-06]</b> Won the [Award Name] for [Achievement].</li>
-            </ul>
-          </section>
+          {/* Currently Card */}
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%', margin: '2rem 0' }}>
+            <div className={styles.currentlyCard}>
+              <div className={styles.currentlyCardContent}>
+                <div className={styles.currentlyIconContainer}>
+                  <svg className={styles.currentlyIcon} viewBox="0 0 24 24" fill="none" width="48" height="48">
+                    <circle cx="12" cy="12" r="10" fill="#667eea" />
+                    <rect x="11" y="10" width="2" height="6" rx="1" fill="#fff" />
+                    <rect x="11" y="7" width="2" height="2" rx="1" fill="#fff" />
+                  </svg>
+                </div>
+                <div className={styles.currentlyTextContent}>
+                  <h3 className={styles.currentlyTitle}>Currently...</h3>
+                  <p className={styles.currentlyDescription}>
+                    I am currently a member of the MAPIR UMA (MAchine Perception and Intelligent Robotics)
+                    research group, where I am working on the research and development of Computer Vision
+                    and AI systems. I'm also looking for internship/junior opportunities in the field of AI
+                    and CV for this summer. If you are interested in collaborating or have opportunities
+                    available, please feel free to contact me!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <section style={{ width: '100%', maxWidth: 900, margin: '3rem auto' }}>
-            <h2>Interests</h2>
-            <ul style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center', listStyle: 'none', padding: 0 }}>
-              <li>Artificial Intelligence</li>
-              <li>Open Source</li>
-              <li>Photography</li>
-              <li>Traveling</li>
-              <li>UI/UX Design</li>
-              <li>Robotics</li>
-            </ul>
+          {/* Latest News Cards */}
+          <section style={{ width: '100%', maxWidth: 1200, margin: '3rem auto' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2.5rem', fontWeight: '600' }}>Latest News</h2>
+            <div
+              className={
+                newsData.length === 1
+                  ? `${styles.newsGrid} ${styles.singleNews}`
+                  : styles.newsGrid
+              }
+            >
+              {newsData.map((news, index) => (
+                <div key={index} className={styles.newsCard}>
+                  <div className={styles.newsImageContainer}>
+                    <img
+                      src={news.image}
+                      alt={news.title}
+                      className={styles.newsImage}
+                    />
+                  </div>
+                  <div className={styles.newsContent}>
+                    <div className={styles.newsDate}>{news.date}</div>
+                    <h3 className={styles.newsTitle}>{news.title}</h3>
+                    <p className={styles.newsDescription}>{news.description}</p>
+                    {news.customButtons && news.customButtons.length > 0 && (
+                      <div className={styles.newsButtonContainer}>
+                        {news.customButtons.map((button, btnIndex) => (
+                          <a
+                            key={btnIndex}
+                            href={button.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.newsButton}
+                            style={{ backgroundColor: button.color }}
+                          >
+                            {button.text}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
+          {/* Margen extra entre news y footer */}
+          <div style={{ height: '3rem' }} />
         </main>
       </div>
     </Layout>
