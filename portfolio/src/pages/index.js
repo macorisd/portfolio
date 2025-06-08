@@ -1,5 +1,5 @@
 import Layout from '@theme/Layout';
-import styles from './index.module.css';
+import styles from '../css/index.module.css';
 
 const newsData = [
   {

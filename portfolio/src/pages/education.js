@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import styles from './education.module.css';
+import styles from '../css/education.module.css';
 
 // List of educational experiences
 const education = [

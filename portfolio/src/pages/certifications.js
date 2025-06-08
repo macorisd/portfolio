@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import styles from './certifications.module.css';
+import styles from '../css/certifications.module.css';
 
 // List of certifications
 const certifications = [

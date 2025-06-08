@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import styles from './papers.module.css';
+import styles from '../css/papers.module.css';
 
 // List of papers
 const papers = [

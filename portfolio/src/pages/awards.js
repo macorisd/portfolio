@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
-import styles from './awards.module.css';
+import styles from '../css/awards.module.css';
 
 // List of awards and achievements
 const awards = [

@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import styles from './projects.module.css';
+import styles from '../css/projects.module.css';
 
 const projects = [  {
     title: 'TALOS',

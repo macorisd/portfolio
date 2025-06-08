@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import styles from './contact.module.css';
+import styles from '../css/contact.module.css';
 
 // Contact information
 const contacts = [

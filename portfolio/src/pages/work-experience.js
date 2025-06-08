@@ -1,6 +1,6 @@
 // import React from 'react';
 import Layout from '@theme/Layout';
-import styles from './work-experience.module.css';
+import styles from '../css/work-experience.module.css';
 
 // List of companies with positions
 const workExperience = [
