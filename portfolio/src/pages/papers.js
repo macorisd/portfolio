@@ -32,7 +32,7 @@ const papers = [
     the-art technologies. Qualitative evaluations demonstrate that TALOS correctly identifies
     and segments objects from categories beyond COCO, outperforming Detectron2 in semantic
     richness and mask quality, especially in complex scenes.`,
-    pdfUrl: '/pdf/paper_simposio_almeria.pdf',
+    pdfUrl: 'pdf/paper_simposio_almeria.pdf',
     customButtons: [
       {
         text: 'Publication',

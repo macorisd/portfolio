@@ -12,7 +12,7 @@ const newsData = [
     image: 'img/simposio_almeria_news.jpg',
     customButtons: [
       { text: 'Symposium Website', color: '#72c28e', url: 'https://arm.ual.es/rbvm/' },
-      { text: 'Paper PDF', color: '#b93434', url: '/pdf/paper_simposio_almeria.pdf' },
+      { text: 'Paper PDF', color: '#b93434', url: 'pdf/paper_simposio_almeria.pdf' },
       // { text: 'LinkedIn Post', color: '#0a66c2', url: 'https://linkedin.com/in/example' },
     ],
   },
