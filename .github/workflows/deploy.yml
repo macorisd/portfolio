@@ -1,6 +1,5 @@
 name: Deploy Docusaurus to GitHub Pages
 
-# 1) Cuándo se dispara
 on:
   push:
     branches:
@@ -8,32 +7,28 @@ on:
 
 jobs:
   build-and-deploy:
-    # 2) Entorno donde corre
     runs-on: ubuntu-latest
 
     steps:
-      # 3a) Revisa el código fuente
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 3b) Instala la versión de Node que necesites
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'         # o 18, según tu Docusaurus
+          node-version: '16'
 
-      # 3c) Instala dependencias con cache opcional
       - name: Install dependencies
+        working-directory: ./portfolio
         run: npm ci
 
-      # 3d) Genera la versión de producción
       - name: Build static site
+        working-directory: ./portfolio
         run: npm run build
 
-      # 3e) Publica en la rama gh-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./portfolio/build
           publish_branch: gh-pages
