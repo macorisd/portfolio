@@ -20,7 +20,7 @@ const awards = [
     entity: 'NICS Lab - Universidad de Málaga',
     url: 'https://www.nics.uma.es/news/el-primer-malackathon-premia-los-buenos-proyectos-en-materia-de-uso-y-eficiencia-de-recursos-hidricos/',
     description: 'Hackathon focused on water data analysis and management using Oracle Cloud infrastructure. Project centered on analyzing data from Spanish reservoirs, developing a secure and accessible web application to display the data, and implementing water consumption predictions.',
-    image: '/img/malackathon_award.jpeg',
+    image: 'img/malackathon_award.jpeg',
   },
   {
     title: 'VIII Academic Excellence Awards for the Spanish Baccalaureate – Awarded',
@@ -29,7 +29,7 @@ const awards = [
     entity: 'Ayuntamiento de Estepona',
     url: 'https://ayuntamiento.estepona.es/noticia/16232-el-alcalde-reconoce-a-los-16-mejores-alumnos-de-bachillerato-de-estepona-con-los-viii-premios-a-la-excelencia-educativa',
     description: 'Award received with an average grade of 10 (out of 10) in both the first and second years of the Spanish Baccalaureate.',
-    image: '/img/baccalaureate_award.jpg',
+    image: 'img/baccalaureate_award.jpg',
   },
 ];
 

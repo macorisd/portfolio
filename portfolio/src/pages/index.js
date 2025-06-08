@@ -9,7 +9,7 @@ const newsData = [
     developed for open-vocabulary semantic instance segmentation, and shared the methodology and results detailed
     in my paper.`,
     date: 'Jun 2025',
-    image: '/img/simposio_almeria_news.jpg',
+    image: 'img/simposio_almeria_news.jpg',
     customButtons: [
       { text: 'Symposium Website', color: '#72c28e', url: 'https://arm.ual.es/rbvm/' },
       { text: 'Paper PDF', color: '#b93434', url: '/pdf/paper_simposio_almeria.pdf' },
@@ -24,7 +24,7 @@ export default function Home() {
       <div className={styles.container}>
         <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
           <img
-            src="/img/profile.jpg"
+            src="img/profile.jpg"
             alt="Macorís Decena"
             className={styles.profileImage}
           />

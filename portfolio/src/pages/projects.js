@@ -4,7 +4,7 @@ import styles from '../css/projects.module.css';
 
 const projects = [  {
     title: 'TALOS',
-    image: '/img/talos_project.png',    description:
+    image: 'img/talos_project.png',    description:
       `A Modular and Automatic System for Open-Vocabulary Semantic Instance Segmentation.
       
       TALOS is a method developed as part of research at the MAPIR UMA group. Its processing consists of three sequential stages: Tagging, Location, and Segmentation. It is an automatic method, taking only a single image as input, and it's modular, allowing the inclusion of various state-of-the-art models at each of its stages. It includes a ROS2 node designed for communication with robotic platforms. Qualitative evaluations demonstrate that TALOS provides richer semantic information and higher mask quality than Detectron2.`,
@@ -13,7 +13,7 @@ const projects = [  {
   },
   {
     title: 'Ultimate Computer Vision TicTacToe',
-    image: '/img/u_cv_ttt_project.png',
+    image: 'img/u_cv_ttt_project.png',
     description:
       `A Computer Vision-powered Python program that analyzes a physical TicTacToe game through the camera and plays against the user.
       
@@ -23,7 +23,7 @@ const projects = [  {
   },
   {
     title: 'Planit',
-    image: '/img/planit_project.png',
+    image: 'img/planit_project.png',
     description:
       'A mobile task organizer app using Android Studio and SQLite, with multi-language support.',
     finished: true,
@@ -31,7 +31,7 @@ const projects = [  {
   },
   {
     title: 'Instagram Fake Account Analysis',
-    image: '/img/instagram_fake_analysis_project.png',
+    image: 'img/instagram_fake_analysis_project.png',
     description:
       'A research study in R focused on classifying fake Instagram accounts through dataset analysis.',
     finished: true,
@@ -39,7 +39,7 @@ const projects = [  {
   },
   {
     title: 'Threes Space State Search',
-    image: '/img/threes_project.png',
+    image: 'img/threes_project.png',
     description:
       'A Python program that uses state-space search theory to achieve the highest score in the game Threes, visualized with Pygame.',
     finished: true,
@@ -47,7 +47,7 @@ const projects = [  {
   },
   {
     title: 'Orcast',
-    image: '/img/orcast_project.png',
+    image: 'img/orcast_project.png',
     description:
       'A Unity-developed pixel art game focused on saving the future of a magical valley.',
     finished: true,
@@ -55,7 +55,7 @@ const projects = [  {
   },
   {
     title: 'Personal Portfolio (This Site)',
-    image: '/img/portfolio_project.png',
+    image: 'img/portfolio_project.png',
     description:
       'My personal Software Engineer portfolio, built with Docusaurus + React. Features articles, education, work experience, and more.',
     finished: false,
