@@ -6,10 +6,10 @@ import styles from './articles.module.css';
 const articles = [
   {
     title: 'Instance semantic segmentation using an open vocabulary',
-    date: null,
+    date: 'May 2025',
     venue: {
       name: 'Simposio RBVM - Almería 2025',
-      url: 'https://arm.ual.es/rbvm/comunicaciones/',
+      url: 'https://arm.ual.es/rbvm/',
     },
     authors: [
       { name: 'Decena-Gimenez, M.', url: null },
@@ -34,6 +34,11 @@ const articles = [
     richness and mask quality, especially in complex scenes.`,
     pdfUrl: 'https://drive.google.com/file/d/1BrQ8pja14TiN8dBNRmDNccvg6Sl7ivgK/view?usp=sharing',
     customButtons: [
+      {
+        text: 'Publication',
+        color: '#2e90db',
+        url: 'https://ingmec.ual.es/ojs/index.php/RBVM25/article/view/38',
+      },
       {
         text: 'TALOS GitHub',
         color: '#6f42c1',
