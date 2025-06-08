@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from '../css/papers.module.css';
 
 // List of papers
@@ -132,7 +133,7 @@ export default function Papers() {
                 {/* Buttons: Read PDF + Custom Buttons */}
                 <div className={styles.buttonContainer}>
                   <a
-                    href={paper.pdfUrl}
+                    href={/^https?:\/\//.test(paper.pdfUrl) ? paper.pdfUrl : useBaseUrl(paper.pdfUrl)}
                     target="_blank"
                     rel="noopener"
                     className={styles.pdfButton}
@@ -144,7 +145,7 @@ export default function Papers() {
                     paper.customButtons.map((btn, i) => (
                       <a
                         key={i}
-                        href={btn.url}
+                        href={/^https?:\/\//.test(btn.url) ? btn.url : useBaseUrl(btn.url)}
                         target="_blank"
                         rel="noopener"
                         className={styles.customButton}

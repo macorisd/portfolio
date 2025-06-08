@@ -1,4 +1,5 @@
 import Layout from '@theme/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from '../css/index.module.css';
 
 const newsData = [
@@ -24,7 +25,7 @@ export default function Home() {
       <div className={styles.container}>
         <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
           <img
-            src="img/profile.jpg"
+            src={useBaseUrl('img/profile.jpg')}
             alt="Macorís Decena"
             className={styles.profileImage}
           />
@@ -76,7 +77,7 @@ export default function Home() {
                 <div key={index} className={styles.newsCard}>
                   <div className={styles.newsImageContainer}>
                     <img
-                      src={news.image}
+                      src={useBaseUrl(news.image)}
                       alt={news.title}
                       className={styles.newsImage}
                     />
@@ -90,7 +91,7 @@ export default function Home() {
                         {news.customButtons.map((button, btnIndex) => (
                           <a
                             key={btnIndex}
-                            href={button.url}
+                            href={/^https?:\/\//.test(button.url) ? button.url : useBaseUrl(button.url)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.newsButton}

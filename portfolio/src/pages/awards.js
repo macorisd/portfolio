@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from '../css/awards.module.css';
 
 // List of awards and achievements
@@ -75,7 +76,7 @@ export default function Awards() {
                   {award.image && (
                     <div className={styles.imageContainer} onClick={() => openModal(award.image, award.title)}>
                       <img 
-                        src={award.image} 
+                        src={useBaseUrl(award.image)} 
                         alt={award.title}
                         className={styles.awardImage}
                         loading="lazy"
@@ -94,7 +95,7 @@ export default function Awards() {
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
               <span className={styles.closeButton} onClick={closeModal}>&times;</span>
               <img 
-                src={selectedImage.image} 
+                src={useBaseUrl(selectedImage.image)} 
                 alt={selectedImage.title}
                 className={styles.modalImage}
               />
