@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import styles from './articles.module.css';
+import styles from './papers.module.css';
 
-// List of articles
-const articles = [
+// List of papers
+const papers = [
   {
     title: 'Instance semantic segmentation using an open vocabulary',
     date: 'May 2025',
@@ -12,7 +12,7 @@ const articles = [
       url: 'https://arm.ual.es/rbvm/',
     },
     authors: [
-      { name: 'Decena-Gimenez, M.', url: null },
+      { name: 'Decena-Gimenez, M.', url: '/' },
       { name: 'Moncada-Ramirez, J.', url: null },
       { name: 'Ruiz-Sarmiento, J.R.', url: 'https://mapir.isa.uma.es/mapirwebsite/?p=1366' },
       { name: 'Gonzalez-Jimenez, J.', url: 'https://mapir.isa.uma.es/mapirwebsite/?p=1536' },
@@ -32,7 +32,7 @@ const articles = [
     the-art technologies. Qualitative evaluations demonstrate that TALOS correctly identifies
     and segments objects from categories beyond COCO, outperforming Detectron2 in semantic
     richness and mask quality, especially in complex scenes.`,
-    pdfUrl: 'https://drive.google.com/file/d/1BrQ8pja14TiN8dBNRmDNccvg6Sl7ivgK/view?usp=sharing',
+    pdfUrl: '/pdf/paper_simposio_almeria.pdf',
     customButtons: [
       {
         text: 'Publication',
@@ -48,41 +48,41 @@ const articles = [
   },
 ];
 
-export default function Articles() {
+export default function Papers() {
   return (
-    <Layout title="Published Articles">
+    <Layout title="Published Papers">
       <main className={styles.container}>
-        <h1 className={styles.pageTitle}>Published Articles</h1>
+        <h1 className={styles.pageTitle}>Published Papers</h1>
         <div className={styles.cardContainer}>
-          {articles.map((article, idx) => (
+          {papers.map((paper, idx) => (
             <div key={idx} className={styles.card}>
               <div className={styles.cardContent}>
                 {/* Title */}
-                <h2 className={styles.title}>{article.title}</h2>
+                <h2 className={styles.title}>{paper.title}</h2>
 
                 {/* Meta: Date & Venue */}
                 <div className={styles.meta}>
                   <span className={styles.date}>
-                    {article.date || 'Pending publication'}
+                    {paper.date || 'Pending publication'}
                   </span>
                   {' • '}
-                  {article.venue.url ? (
+                  {paper.venue.url ? (
                     <a
-                      href={article.venue.url}
+                      href={paper.venue.url}
                       target="_blank"
                       rel="noopener"
                       className={styles.venue}
                     >
-                      {article.venue.name}
+                      {paper.venue.name}
                     </a>
                   ) : (
-                    <span className={styles.venue}>{article.venue.name}</span>
+                    <span className={styles.venue}>{paper.venue.name}</span>
                   )}
                 </div>
 
                 {/* Authors */}
                 <div className={styles.authors}>
-                  {article.authors.map((author, i) => (
+                  {paper.authors.map((author, i) => (
                     <React.Fragment key={author.name}>
                       {author.url ? (
                         <a
@@ -98,25 +98,25 @@ export default function Articles() {
                           <em>{author.name}</em>
                         </span>
                       )}
-                      {i < article.authors.length - 1 ? ', ' : ''}
+                      {i < paper.authors.length - 1 ? ', ' : ''}
                     </React.Fragment>
                   ))}
                 </div>
 
                 {/* Research Group */}
-                {article.group?.name && (
+                {paper.group?.name && (
                   <div className={styles.group}>
-                    {article.group.url ? (
+                    {paper.group.url ? (
                       <a
-                        href={article.group.url}
+                        href={paper.group.url}
                         target="_blank"
                         rel="noopener"
                         className={styles.groupLink}
                       >
-                        {article.group.name}
+                        {paper.group.name}
                       </a>
                     ) : (
-                      <span className={styles.groupName}>{article.group.name}</span>
+                      <span className={styles.groupName}>{paper.group.name}</span>
                     )}
                     {' '}Research Group
                   </div>
@@ -125,14 +125,14 @@ export default function Articles() {
                 {/* Abstract */}
                 <div className={styles.abstractContainer}>
                   <p className={styles.abstract}>
-                    {article.abstract.replace(/\n/g, ' ')}
+                    {paper.abstract.replace(/\n/g, ' ')}
                   </p>
                 </div>
 
                 {/* Buttons: Read PDF + Custom Buttons */}
                 <div className={styles.buttonContainer}>
                   <a
-                    href={article.pdfUrl}
+                    href={paper.pdfUrl}
                     target="_blank"
                     rel="noopener"
                     className={styles.pdfButton}
@@ -140,8 +140,8 @@ export default function Articles() {
                     Read PDF
                   </a>
 
-                  {article.customButtons &&
-                    article.customButtons.map((btn, i) => (
+                  {paper.customButtons &&
+                    paper.customButtons.map((btn, i) => (
                       <a
                         key={i}
                         href={btn.url}
