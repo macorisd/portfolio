@@ -262,9 +262,12 @@
   .pageTitle {
     font-size: 2rem;
   }
-  
   .timeline {
     padding-left: 30px;
+  }
+  
+  .timeline::before {
+    left: 15px;
   }
   
   .timelineContent {
@@ -280,7 +283,6 @@
     height: 180px;
     align-self: center;
   }
-  
   .timelineDot {
     left: -21px;
     width: 14px;

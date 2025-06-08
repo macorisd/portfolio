@@ -58,7 +58,7 @@ const projects = [  {
     image: '/img/portfolio_project.png',
     description:
       'My personal Software Engineer portfolio, built with Docusaurus + React. Features articles, education, work experience, and more.',
-    finished: true,
+    finished: false,
     githubUrl: 'https://github.com/macorisd/portfolio',
   },
 ];

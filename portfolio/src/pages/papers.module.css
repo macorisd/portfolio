@@ -167,3 +167,123 @@
 .customButton:active {
   transform: translateY(0);
 }
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+  }
+  
+  .cardContainer {
+    gap: 1.5rem;
+  }
+  
+  .cardContent {
+    padding: 1.2rem;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  
+  .meta {
+    margin-bottom: 0.8rem;
+  }
+  
+  .authors {
+    margin-bottom: 0.4rem;
+  }
+  
+  .group {
+    margin-bottom: 0.8rem;
+  }
+  
+  .abstractContainer {
+    padding-left: 0.8rem;
+    padding-right: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .abstract {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  .buttonContainer {
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+  }
+  
+  .pdfButton,
+  .customButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0.8rem;
+  }
+  
+  .pageTitle {
+    margin-top: 1rem;
+  }
+  
+  .cardContent {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .meta {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .authors {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .group {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .abstractContainer {
+    padding-left: 0.6rem;
+    padding-right: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-left-width: 3px;
+  }
+  
+  .abstract {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .buttonContainer {
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+    flex-direction: column;
+  }
+  
+  .pdfButton,
+  .customButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}

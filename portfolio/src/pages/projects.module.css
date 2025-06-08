@@ -170,3 +170,13 @@
     height: 140px;
   }
 }
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .pageTitle {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5srem;
+    padding: 0 1rem;
+  }
+}

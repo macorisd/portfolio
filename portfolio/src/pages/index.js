@@ -26,10 +26,10 @@ export default function Home() {
           <img
             src="/img/profile.jpg"
             alt="Macorís Decena"
-            style={{ borderRadius: '50%', width: '200px', height: '200px', objectFit: 'cover', boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
+            className={styles.profileImage}
           />
-          <h1 style={{ fontSize: '3rem', margin: '2rem 0 1rem' }}>Macorís Decena</h1>
-          <p style={{ fontSize: '1.5rem', textAlign: 'center', maxWidth: 800, marginBottom: '2.5rem' }}>
+          <h1 className={styles.mainTitle}>Macorís Decena</h1>
+          <p className={styles.mainDescription}>
             Hi! I'm a 21-year-old Software Engineer from Spain, interested in research and development
             of AI and Computer Vision systems, as well as backend development. I am
             passionate about facing complex problems and using my creativity to solve them.
@@ -63,8 +63,8 @@ export default function Home() {
           </div>
 
           {/* Latest News Cards */}
-          <section style={{ width: '100%', maxWidth: 1200, margin: '3rem auto' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2.5rem', fontWeight: '600' }}>Latest News</h2>
+          <section className={styles.newsSection}>
+            <h2 className={styles.newsSectionTitle}>Latest News</h2>
             <div
               className={
                 newsData.length === 1

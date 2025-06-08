@@ -125,3 +125,12 @@
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
 }
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .pageTitle {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+  }
+}

@@ -204,11 +204,75 @@
   line-height: 1.5;
 }
 
+/* Hover effect for profile image */
+.profileImage {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.profileImage:hover {
+  transform: scale(1.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Main content styles */
+.mainTitle {
+  font-size: 3rem;
+  margin: 2rem 0 1rem;
+  text-align: center;
+}
+
+.mainDescription {
+  font-size: 1.5rem;
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+}
+
+.newsSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem auto;
+}
+
+.newsSectionTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
+    margin: 1.5rem 1rem 0.5rem;
+  }
+  
+  .mainDescription {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .newsSectionTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
+  }
+  
   .newsGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 0.5rem;
+    padding: 0 1.5rem;
   }
   .newsImageContainer {
     height: 140px;
@@ -232,6 +296,9 @@
     width: 60px;
     height: 60px;
   }
+  .currentlyCard {
+    margin: 0 1.5rem;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -248,5 +315,39 @@
   .currentlyCardContent {
     padding: 1.5rem;
     gap: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mainTitle {
+    font-size: 1.8rem;
+    margin: 1rem 1rem 0.5rem;
+  }
+  
+  .mainDescription {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 2rem;
+    line-height: 1.7;
+  }
+  
+  .newsSectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding: 0 2rem;
+  }
+  
+  .profileImage {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .newsGrid {
+    padding: 0 2rem;
+    gap: 1.2rem;
+  }
+  
+  .currentlyCard {
+    margin: 0 2rem;
   }
 }

@@ -108,3 +108,12 @@
   font-weight: 500;
   box-shadow: 0 2px 8px rgba(19, 102, 255, 0.2);
 }
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .pageTitle {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+}
