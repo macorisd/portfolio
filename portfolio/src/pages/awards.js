@@ -37,6 +37,12 @@ const awards = [
 export default function Awards() {
   const [selectedImage, setSelectedImage] = useState(null);
 
+  // Pre-process awards to include the resolved image URLs
+  const processedAwards = awards.map(award => ({
+    ...award,
+    imageUrl: award.image ? useBaseUrl(award.image) : null
+  }));
+
   const openModal = (image, title) => {
     setSelectedImage({ image, title });
   };
@@ -48,9 +54,8 @@ export default function Awards() {
   return (
     <Layout title="Awards & Achievements">
       <main className={styles.timelineContainer}>
-        <h1 className={styles.pageTitle}>Awards & Achievements</h1>
-        <div className={styles.timeline}>
-          {awards.map((award, index) => (
+        <h1 className={styles.pageTitle}>Awards & Achievements</h1>        <div className={styles.timeline}>
+          {processedAwards.map((award, index) => (
             <div key={index} className={styles.timelineItem}>
               <div className={styles.timelineDot} />              <div className={styles.timelineContent}>
                 <div className={styles.contentWrapper}>
@@ -74,9 +79,9 @@ export default function Awards() {
                     )}
                   </div>
                   {award.image && (
-                    <div className={styles.imageContainer} onClick={() => openModal(award.image, award.title)}>
+                    <div className={styles.imageContainer} onClick={() => openModal(award.imageUrl, award.title)}>
                       <img 
-                        src={useBaseUrl(award.image)} 
+                        src={award.imageUrl} 
                         alt={award.title}
                         className={styles.awardImage}
                         loading="lazy"
@@ -87,15 +92,13 @@ export default function Awards() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Modal for enlarged image */}
+        </div>        {/* Modal for enlarged image */}
         {selectedImage && (
           <div className={styles.modal} onClick={closeModal}>
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
               <span className={styles.closeButton} onClick={closeModal}>&times;</span>
               <img 
-                src={useBaseUrl(selectedImage.image)} 
+                src={selectedImage.image} 
                 alt={selectedImage.title}
                 className={styles.modalImage}
               />

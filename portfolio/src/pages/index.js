@@ -4,7 +4,7 @@ import styles from '../css/index.module.css';
 
 const newsData = [
   {
-    title: 'Presentation at RBVM Symposium (Almería 2025): Semantic Instance Segmentation using an Open-Vocabulary',
+    title: 'Presentation at RBVM Symposium (Almería 2025): Semantic Instance Segmentation using an Open Vocabulary',
     description: `I had the opportunity to present my research at the RBVM Symposium organized in Almería, Spain
     by the Spanish Committee of Automation, in the Computer Vision category. I introduced TALOS, the system I
     developed for open-vocabulary semantic instance segmentation, and shared the methodology and results detailed
@@ -14,7 +14,7 @@ const newsData = [
     customButtons: [
       { text: 'Symposium Website', color: '#72c28e', url: 'https://arm.ual.es/rbvm/' },
       { text: 'Paper PDF', color: '#b93434', url: 'pdf/paper_simposio_almeria.pdf' },
-      // { text: 'LinkedIn Post', color: '#0a66c2', url: 'https://linkedin.com/in/example' },
+      { text: 'LinkedIn Post', color: '#0a66c2', url: 'https://www.linkedin.com/posts/macorisd_computervision-artificialintelligence-ai-activity-7337869321550938113-TfWu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEPVUogBn0JeKTtgixvAyC2rMLnfYxKUD_c' },
     ],
   },
 ];
