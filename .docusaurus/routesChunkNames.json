@@ -1,0 +1,365 @@
+{
+  "/portfolio/__docusaurus/debug-040": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---portfolio-docusaurus-debugb-38-91d"
+    }
+  },
+  "/portfolio/__docusaurus/debug/config-9ca": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---portfolio-docusaurus-debugb-38-91d"
+    }
+  },
+  "/portfolio/__docusaurus/debug/content-da5": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---portfolio-docusaurus-debugb-38-91d"
+    },
+    "__props": "__props---portfolio-docusaurus-debug-content-01-e-b86"
+  },
+  "/portfolio/__docusaurus/debug/globalData-46a": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---portfolio-docusaurus-debugb-38-91d"
+    }
+  },
+  "/portfolio/__docusaurus/debug/metadata-138": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---portfolio-docusaurus-debugb-38-91d"
+    }
+  },
+  "/portfolio/__docusaurus/debug/registry-3df": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---portfolio-docusaurus-debugb-38-91d"
+    }
+  },
+  "/portfolio/__docusaurus/debug/routes-dd6": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---portfolio-docusaurus-debugb-38-91d"
+    }
+  },
+  "/portfolio/awards-181": {
+    "__comp": "__comp---site-src-pages-awards-jsaf-7-6c4",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/blog-fce": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "items": [
+      {
+        "content": "content---portfolio-blog-766-63c"
+      },
+      {
+        "content": "content---portfolio-blogf-4-f-62a"
+      },
+      {
+        "content": "content---portfolio-blog-871-6e7"
+      },
+      {
+        "content": "content---portfolio-blog-925-d05"
+      }
+    ],
+    "__props": "__props---portfolio-blog-720-1e0"
+  },
+  "/portfolio/blog/archive-5f2": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "__props": "__props---portfolio-blog-archivef-7-b-74d"
+  },
+  "/portfolio/blog/authors-569": {
+    "__comp": "__comp---theme-blog-pages-blog-authors-list-page-621-70c",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---portfolio-blog-authorsace-023"
+      },
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "__props": "__props---portfolio-blog-authors-7-a-0-df2"
+  },
+  "/portfolio/blog/authors/all-sebastien-lorber-articles-108": {
+    "__comp": "__comp---theme-blog-pages-blog-authors-posts-page-33-f-bd5",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---portfolio-blog-authorsace-023"
+      },
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "items": [
+      {
+        "content": "content---portfolio-blog-766-63c"
+      },
+      {
+        "content": "content---portfolio-blogf-4-f-62a"
+      },
+      {
+        "content": "content---portfolio-blog-925-d05"
+      }
+    ],
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "__props": "__props---portfolio-blog-authors-all-sebastien-lorber-articles-2-e-3-6ca"
+  },
+  "/portfolio/blog/authors/yangshun-5d5": {
+    "__comp": "__comp---theme-blog-pages-blog-authors-posts-page-33-f-bd5",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---portfolio-blog-authorsace-023"
+      },
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "items": [
+      {
+        "content": "content---portfolio-blog-766-63c"
+      },
+      {
+        "content": "content---portfolio-blog-871-6e7"
+      },
+      {
+        "content": "content---portfolio-blog-925-d05"
+      }
+    ],
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "__props": "__props---portfolio-blog-authors-yangshun-02-f-b61"
+  },
+  "/portfolio/blog/first-blog-post-1a5": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---portfolio-blog-authorsace-023"
+      },
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "content": "content---portfolio-blog-first-blog-poste-27-7fb"
+  },
+  "/portfolio/blog/long-blog-post-946": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---portfolio-blog-authorsace-023"
+      },
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "content": "content---portfolio-blog-long-blog-post-736-cae"
+  },
+  "/portfolio/blog/mdx-blog-post-dbe": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---portfolio-blog-authorsace-023"
+      },
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "content": "content---portfolio-blog-mdx-blog-post-593-38e"
+  },
+  "/portfolio/blog/tags-921": {
+    "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
+    "__context": {
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "__props": "__props---portfolio-blog-tagsfe-5-1d6"
+  },
+  "/portfolio/blog/tags/docusaurus-972": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "items": [
+      {
+        "content": "content---portfolio-blog-766-63c"
+      },
+      {
+        "content": "content---portfolio-blogf-4-f-62a"
+      },
+      {
+        "content": "content---portfolio-blog-871-6e7"
+      },
+      {
+        "content": "content---portfolio-blog-925-d05"
+      }
+    ],
+    "__props": "__props---portfolio-blog-tags-docusaurus-1-c-1-4b3"
+  },
+  "/portfolio/blog/tags/facebook-66a": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "items": [
+      {
+        "content": "content---portfolio-blog-766-63c"
+      }
+    ],
+    "__props": "__props---portfolio-blog-tags-facebook-893-748"
+  },
+  "/portfolio/blog/tags/hello-a5e": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "items": [
+      {
+        "content": "content---portfolio-blog-766-63c"
+      },
+      {
+        "content": "content---portfolio-blog-871-6e7"
+      }
+    ],
+    "__props": "__props---portfolio-blog-tags-hello-89-f-ea1"
+  },
+  "/portfolio/blog/tags/hola-372": {
+    "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
+    "__context": {
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "items": [
+      {
+        "content": "content---portfolio-blog-925-d05"
+      }
+    ],
+    "__props": "__props---portfolio-blog-tags-holac-2-a-d0f"
+  },
+  "/portfolio/blog/welcome-f8c": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---portfolio-blog-authorsace-023"
+      },
+      "plugin": "plugin---portfolio-blog-369-566"
+    },
+    "sidebar": "sidebar---portfolio-blog-814-da6",
+    "content": "content---portfolio-blog-welcomed-9-f-524"
+  },
+  "/portfolio/certifications-ed4": {
+    "__comp": "__comp---site-src-pages-certifications-js-771-0de",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/contact-698": {
+    "__comp": "__comp---site-src-pages-contact-js-83-e-320",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/education-df8": {
+    "__comp": "__comp---site-src-pages-education-js-789-c51",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/papers-477": {
+    "__comp": "__comp---site-src-pages-papers-js-573-8e6",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/projects-9f7": {
+    "__comp": "__comp---site-src-pages-projects-jsee-7-a5f",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/skills-4f5": {
+    "__comp": "__comp---site-src-pages-skills-js-18-d-1c7",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/work-experience-304": {
+    "__comp": "__comp---site-src-pages-work-experience-jsa-4-a-f32",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  },
+  "/portfolio/docs-cfa": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---portfolio-docsaba-85b"
+    }
+  },
+  "/portfolio/docs-259": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---portfolio-docs-062-775"
+  },
+  "/portfolio/docs-457": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/portfolio/docs/category/tutorial---basics-e44": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "__props": "__props---portfolio-docs-category-tutorial-basicsa-7-f-e1c"
+  },
+  "/portfolio/docs/category/tutorial---extras-e1d": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "__props": "__props---portfolio-docs-category-tutorial-extras-032-229"
+  },
+  "/portfolio/docs/intro-dcf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-intro-0-e-3-586"
+  },
+  "/portfolio/docs/tutorial-basics/congratulations-513": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-basics-congratulations-822-4dd"
+  },
+  "/portfolio/docs/tutorial-basics/create-a-blog-post-f91": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-basics-create-a-blog-post-533-792"
+  },
+  "/portfolio/docs/tutorial-basics/create-a-document-e33": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-basics-create-a-document-1-e-4-554"
+  },
+  "/portfolio/docs/tutorial-basics/create-a-page-f2d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-basics-create-a-page-5-c-8-fb1"
+  },
+  "/portfolio/docs/tutorial-basics/deploy-your-site-e5b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-basics-deploy-your-sitef-55-6d0"
+  },
+  "/portfolio/docs/tutorial-basics/markdown-features-6f3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-basics-markdown-features-18-c-7a2"
+  },
+  "/portfolio/docs/tutorial-extras/manage-docs-versions-07f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-extras-manage-docs-versionsdff-3c4"
+  },
+  "/portfolio/docs/tutorial-extras/translate-your-site-fb3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---portfolio-docs-tutorial-extras-translate-your-sitee-44-6ce"
+  },
+  "/portfolio/-acb": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---portfolio-awardsa-74-2e3"
+    },
+    "config": "config---portfolio-awards-5-e-9-ea9"
+  }
+}
