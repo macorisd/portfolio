@@ -45,6 +45,21 @@ class Education(BaseModel):
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
 
+class Position(BaseModel):
+    title: str
+    start: str
+    end: Optional[str] = None
+    description: Optional[str] = None
+    tech: Optional[List[str]] = []
+
+class WorkExperience(BaseModel):
+    id: str
+    company: str
+    url: Optional[str] = None
+    positions: List[Position] = []
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
+
 @app.on_event("startup")
 async def startup_db_client():
     global mongodb_client, db
@@ -128,6 +143,57 @@ async def get_education_by_id(education_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch education data: {str(e)}")
+
+@app.get("/work-experience", response_model=List[WorkExperience])
+async def get_work_experience():
+    """Get all work experience records"""
+    try:
+        collection = db.work_experience
+        work_data = []
+        
+        for doc in collection.find().sort("createdAt", -1):  # Sort by newest first
+            # Convert ObjectId to string
+            doc["id"] = str(doc.pop("_id"))
+            
+            # Convert datetime objects to ISO format strings if they exist
+            if "createdAt" in doc and doc["createdAt"]:
+                doc["createdAt"] = doc["createdAt"].isoformat()
+            if "updatedAt" in doc and doc["updatedAt"]:
+                doc["updatedAt"] = doc["updatedAt"].isoformat()
+            
+            work_data.append(doc)
+        
+        return work_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch work experience data: {str(e)}")
+
+@app.get("/work-experience/{work_id}", response_model=WorkExperience)
+async def get_work_experience_by_id(work_id: str):
+    """Get a specific work experience record by ID"""
+    try:
+        if not ObjectId.is_valid(work_id):
+            raise HTTPException(status_code=400, detail="Invalid work experience ID format")
+        
+        collection = db.work_experience
+        doc = collection.find_one({"_id": ObjectId(work_id)})
+        
+        if not doc:
+            raise HTTPException(status_code=404, detail="Work experience record not found")
+        
+        # Convert ObjectId to string
+        doc["id"] = str(doc.pop("_id"))
+        
+        # Convert datetime objects to ISO format strings if they exist
+        if "createdAt" in doc and doc["createdAt"]:
+            doc["createdAt"] = doc["createdAt"].isoformat()
+        if "updatedAt" in doc and doc["updatedAt"]:
+            doc["updatedAt"] = doc["updatedAt"].isoformat()
+        
+        return doc
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch work experience data: {str(e)}")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
