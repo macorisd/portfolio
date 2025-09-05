@@ -9,11 +9,42 @@ from dotenv import load_dotenv
 from datetime import datetime
 import uvicorn
 from pydantic import BaseModel
+from contextlib import asynccontextmanager
 
 # Load environment variables
 load_dotenv()
 
-app = FastAPI(title="Portfolio API", description="API for portfolio data", version="1.0.0")
+# Global MongoDB client
+mongodb_client = None
+db = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    global mongodb_client, db
+    try:
+        mongodb_client = MongoClient(MONGODB_URI)
+        # Test the connection
+        mongodb_client.admin.command('ping')
+        db = mongodb_client[DATABASE_NAME]
+        print(f"Connected to MongoDB at {MONGODB_URI}")
+    except ConnectionFailure as e:
+        print(f"Failed to connect to MongoDB: {e}")
+        raise HTTPException(status_code=500, detail="Database connection failed")
+    
+    yield
+    
+    # Shutdown
+    if mongodb_client:
+        mongodb_client.close()
+        print("Disconnected from MongoDB")
+
+app = FastAPI(
+    title="Portfolio API", 
+    description="API for portfolio data", 
+    version="1.0.0",
+    lifespan=lifespan
+)
 
 # Configure CORS
 app.add_middleware(
@@ -27,10 +58,6 @@ app.add_middleware(
 # MongoDB configuration
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "portfolio")
-
-# Global MongoDB client
-mongodb_client = None
-db = None
 
 class Education(BaseModel):
     id: str
@@ -59,26 +86,6 @@ class WorkExperience(BaseModel):
     positions: List[Position] = []
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
-
-@app.on_event("startup")
-async def startup_db_client():
-    global mongodb_client, db
-    try:
-        mongodb_client = MongoClient(MONGODB_URI)
-        # Test the connection
-        mongodb_client.admin.command('ping')
-        db = mongodb_client[DATABASE_NAME]
-        print(f"Connected to MongoDB at {MONGODB_URI}")
-    except ConnectionFailure as e:
-        print(f"Failed to connect to MongoDB: {e}")
-        raise HTTPException(status_code=500, detail="Database connection failed")
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    global mongodb_client
-    if mongodb_client:
-        mongodb_client.close()
-        print("Disconnected from MongoDB")
 
 @app.get("/")
 async def root():
