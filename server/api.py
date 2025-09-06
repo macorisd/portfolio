@@ -10,7 +10,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 
 # Import local modules
-from models import Education, WorkExperience, Paper
+from models import Education, WorkExperience, Paper, Certification
 from common_methods import get_sorting_key_for_date
 
 # Load environment variables
@@ -302,6 +302,71 @@ async def get_paper_by_id(paper_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch paper data: {str(e)}")
+
+
+@app.get("/certifications", response_model=List[Certification])
+async def get_certifications():
+    """Get all certifications ordered by date (most recent first)"""
+    try:
+        collection = db.certifications
+        certifications_data = []
+        
+        # Fetch all documents first
+        for doc in collection.find():
+            # Convert ObjectId to string
+            doc["id"] = str(doc.pop("_id"))
+            
+            # Convert datetime objects to ISO format strings if they exist
+            if "createdAt" in doc and doc["createdAt"]:
+                doc["createdAt"] = doc["createdAt"].isoformat()
+            if "updatedAt" in doc and doc["updatedAt"]:
+                doc["updatedAt"] = doc["updatedAt"].isoformat()
+            
+            certifications_data.append(doc)
+        
+        # Custom sorting function for certifications
+        def parse_certification_date_for_sorting(cert_item):
+            """Parse certification dates for sorting. Returns a tuple for comparison."""
+            cert_date = cert_item.get("date", "")
+            
+            # Certifications are always completed, so no current status
+            return get_sorting_key_for_date(cert_date, is_current=False)
+        
+        # Sort certifications data by date (most recent first)
+        certifications_data.sort(key=parse_certification_date_for_sorting)
+        
+        return certifications_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch certifications data: {str(e)}")
+
+
+@app.get("/certifications/{certification_id}", response_model=Certification)
+async def get_certification_by_id(certification_id: str):
+    """Get a specific certification record by ID"""
+    try:
+        if not ObjectId.is_valid(certification_id):
+            raise HTTPException(status_code=400, detail="Invalid certification ID format")
+        
+        collection = db.certifications
+        doc = collection.find_one({"_id": ObjectId(certification_id)})
+        
+        if not doc:
+            raise HTTPException(status_code=404, detail="Certification record not found")
+        
+        # Convert ObjectId to string
+        doc["id"] = str(doc.pop("_id"))
+        
+        # Convert datetime objects to ISO format strings if they exist
+        if "createdAt" in doc and doc["createdAt"]:
+            doc["createdAt"] = doc["createdAt"].isoformat()
+        if "updatedAt" in doc and doc["updatedAt"]:
+            doc["updatedAt"] = doc["updatedAt"].isoformat()
+        
+        return doc
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch certification data: {str(e)}")
 
 
 if __name__ == "__main__":

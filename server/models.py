@@ -67,3 +67,16 @@ class Paper(BaseModel):
     customButtons: Optional[List[CustomButton]] = []
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
+
+
+class Certification(BaseModel):
+    id: str
+    name: str
+    date: str
+    issuer: str
+    url: Optional[str] = None
+    featured: bool = False
+    importance: int = 1
+    fields: List[str] = []
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
