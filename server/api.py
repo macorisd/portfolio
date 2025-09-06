@@ -10,7 +10,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 
 # Import local modules
-from models import Education, WorkExperience, Paper, Certification
+from models import Education, WorkExperience, Paper, Certification, Award
 from common_methods import get_sorting_key_for_date
 
 # Load environment variables
@@ -367,6 +367,71 @@ async def get_certification_by_id(certification_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch certification data: {str(e)}")
+
+
+@app.get("/awards", response_model=List[Award])
+async def get_awards():
+    """Get all awards ordered by date (most recent first)"""
+    try:
+        collection = db.awards
+        awards_data = []
+        
+        # Fetch all documents first
+        for doc in collection.find():
+            # Convert ObjectId to string
+            doc["id"] = str(doc.pop("_id"))
+            
+            # Convert datetime objects to ISO format strings if they exist
+            if "createdAt" in doc and doc["createdAt"]:
+                doc["createdAt"] = doc["createdAt"].isoformat()
+            if "updatedAt" in doc and doc["updatedAt"]:
+                doc["updatedAt"] = doc["updatedAt"].isoformat()
+            
+            awards_data.append(doc)
+        
+        # Custom sorting function for awards
+        def parse_award_date_for_sorting(award_item):
+            """Parse award dates for sorting. Returns a tuple for comparison."""
+            award_date = award_item.get("date", "")
+            
+            # Awards are always received/completed, so no current status
+            return get_sorting_key_for_date(award_date, is_current=False)
+        
+        # Sort awards data by date (most recent first)
+        awards_data.sort(key=parse_award_date_for_sorting)
+        
+        return awards_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch awards data: {str(e)}")
+
+
+@app.get("/awards/{award_id}", response_model=Award)
+async def get_award_by_id(award_id: str):
+    """Get a specific award record by ID"""
+    try:
+        if not ObjectId.is_valid(award_id):
+            raise HTTPException(status_code=400, detail="Invalid award ID format")
+        
+        collection = db.awards
+        doc = collection.find_one({"_id": ObjectId(award_id)})
+        
+        if not doc:
+            raise HTTPException(status_code=404, detail="Award record not found")
+        
+        # Convert ObjectId to string
+        doc["id"] = str(doc.pop("_id"))
+        
+        # Convert datetime objects to ISO format strings if they exist
+        if "createdAt" in doc and doc["createdAt"]:
+            doc["createdAt"] = doc["createdAt"].isoformat()
+        if "updatedAt" in doc and doc["updatedAt"]:
+            doc["updatedAt"] = doc["updatedAt"].isoformat()
+        
+        return doc
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch award data: {str(e)}")
 
 
 if __name__ == "__main__":

@@ -80,3 +80,16 @@ class Certification(BaseModel):
     fields: List[str] = []
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
+
+
+class Award(BaseModel):
+    id: str
+    title: str
+    type: str
+    date: str
+    entity: str
+    url: Optional[str] = None
+    description: Optional[str] = None
+    image: Optional[str] = None
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None

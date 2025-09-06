@@ -322,3 +322,24 @@
     right: 10px;
   }
 }
+
+/* Loading and Error States */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #dc2626;
+  padding: 4rem 2rem;
+  background: rgba(220, 38, 38, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
