@@ -3,13 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 from bson import ObjectId
-from typing import List, Optional
+from typing import List
 import os
 from dotenv import load_dotenv
-from datetime import datetime
 import uvicorn
-from pydantic import BaseModel
 from contextlib import asynccontextmanager
+
+# Import local modules
+from models import Education, WorkExperience
+from common_methods import get_sorting_key_for_date
 
 # Load environment variables
 load_dotenv()
@@ -59,37 +61,11 @@ app.add_middleware(
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "portfolio")
 
-class Education(BaseModel):
-    id: str
-    name: str
-    institution: str
-    url: Optional[str] = None
-    start: str
-    end: Optional[str] = None
-    expectedEnd: Optional[str] = None
-    description: Optional[str] = None
-    grade: Optional[str] = None
-    createdAt: Optional[datetime] = None
-    updatedAt: Optional[datetime] = None
-
-class Position(BaseModel):
-    title: str
-    start: str
-    end: Optional[str] = None
-    description: Optional[str] = None
-    tech: Optional[List[str]] = []
-
-class WorkExperience(BaseModel):
-    id: str
-    company: str
-    url: Optional[str] = None
-    positions: List[Position] = []
-    createdAt: Optional[datetime] = None
-    updatedAt: Optional[datetime] = None
 
 @app.get("/")
 async def root():
     return {"message": "Portfolio API is running"}
+
 
 @app.get("/health")
 async def health_check():
@@ -100,14 +76,16 @@ async def health_check():
     except Exception as e:
         raise HTTPException(status_code=503, detail=f"Database connection failed: {str(e)}")
 
+
 @app.get("/education", response_model=List[Education])
 async def get_education():
-    """Get all education records"""
+    """Get all education records ordered by end date (most recent first)"""
     try:
         collection = db.education
         education_data = []
         
-        for doc in collection.find().sort("createdAt", -1):  # Sort by newest first
+        # Fetch all documents first
+        for doc in collection.find():
             # Convert ObjectId to string
             doc["id"] = str(doc.pop("_id"))
             
@@ -119,9 +97,31 @@ async def get_education():
             
             education_data.append(doc)
         
+        # Custom sorting function
+        def parse_date_for_sorting(education_item):
+            """Parse education dates for sorting. Returns a tuple for comparison."""
+            # Determine which date to use and if it's current
+            end_date = education_item.get("end")
+            expected_end = education_item.get("expectedEnd")
+            start_date = education_item.get("start", "")
+            
+            # If there's an end date, use it (completed education)
+            if end_date and end_date != "null":
+                return get_sorting_key_for_date(end_date, is_current=False)
+            # If no end date but there's an expected end, use that (current education)
+            elif expected_end and expected_end != "null":
+                return get_sorting_key_for_date(expected_end, is_current=True)
+            # If neither, use start date
+            else:
+                return get_sorting_key_for_date(start_date, is_current=False)
+        
+        # Sort education data by date (most recent first)
+        education_data.sort(key=parse_date_for_sorting)
+        
         return education_data
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch education data: {str(e)}")
+
 
 @app.get("/education/{education_id}", response_model=Education)
 async def get_education_by_id(education_id: str):
@@ -151,14 +151,16 @@ async def get_education_by_id(education_id: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch education data: {str(e)}")
 
+
 @app.get("/work-experience", response_model=List[WorkExperience])
 async def get_work_experience():
-    """Get all work experience records"""
+    """Get all work experience records ordered by end date (most recent first)"""
     try:
         collection = db.work_experience
         work_data = []
         
-        for doc in collection.find().sort("createdAt", -1):  # Sort by newest first
+        # Fetch all documents first
+        for doc in collection.find():
             # Convert ObjectId to string
             doc["id"] = str(doc.pop("_id"))
             
@@ -170,9 +172,43 @@ async def get_work_experience():
             
             work_data.append(doc)
         
+        # Custom sorting function for work experience
+        def parse_work_date_for_sorting(work_item):
+            """Parse work experience dates for sorting. Returns a tuple for comparison."""
+            positions = work_item.get("positions", [])
+            if not positions:
+                return (0, 0)  # If no positions, put at end
+            
+            # Find the most recent end date among all positions
+            best_sorting_key = (0, 0)
+            
+            for position in positions:
+                end_date = position.get("end")
+                start_date = position.get("start", "")
+                
+                # Check if this is a current position (no end date)
+                is_current = not end_date or end_date in [None, "null", ""]
+                
+                if is_current:
+                    # Current position gets maximum priority
+                    current_key = get_sorting_key_for_date(start_date, is_current=True)
+                    if current_key < best_sorting_key or best_sorting_key == (0, 0):
+                        best_sorting_key = current_key
+                else:
+                    # Completed position
+                    end_key = get_sorting_key_for_date(end_date, is_current=False)
+                    if end_key < best_sorting_key or best_sorting_key == (0, 0):
+                        best_sorting_key = end_key
+            
+            return best_sorting_key
+        
+        # Sort work experience data by date (most recent first)
+        work_data.sort(key=parse_work_date_for_sorting)
+        
         return work_data
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch work experience data: {str(e)}")
+
 
 @app.get("/work-experience/{work_id}", response_model=WorkExperience)
 async def get_work_experience_by_id(work_id: str):
@@ -201,6 +237,7 @@ async def get_work_experience_by_id(work_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch work experience data: {str(e)}")
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
