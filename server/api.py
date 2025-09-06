@@ -10,7 +10,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 
 # Import local modules
-from models import Education, WorkExperience
+from models import Education, WorkExperience, Paper
 from common_methods import get_sorting_key_for_date
 
 # Load environment variables
@@ -237,6 +237,71 @@ async def get_work_experience_by_id(work_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch work experience data: {str(e)}")
+
+
+@app.get("/papers", response_model=List[Paper])
+async def get_papers():
+    """Get all papers ordered by date (most recent first)"""
+    try:
+        collection = db.papers
+        papers_data = []
+        
+        # Fetch all documents first
+        for doc in collection.find():
+            # Convert ObjectId to string
+            doc["id"] = str(doc.pop("_id"))
+            
+            # Convert datetime objects to ISO format strings if they exist
+            if "createdAt" in doc and doc["createdAt"]:
+                doc["createdAt"] = doc["createdAt"].isoformat()
+            if "updatedAt" in doc and doc["updatedAt"]:
+                doc["updatedAt"] = doc["updatedAt"].isoformat()
+            
+            papers_data.append(doc)
+        
+        # Custom sorting function for papers
+        def parse_paper_date_for_sorting(paper_item):
+            """Parse paper dates for sorting. Returns a tuple for comparison."""
+            paper_date = paper_item.get("date", "")
+            
+            # Papers are always published/completed, so no current status
+            return get_sorting_key_for_date(paper_date, is_current=False)
+        
+        # Sort papers data by date (most recent first)
+        papers_data.sort(key=parse_paper_date_for_sorting)
+        
+        return papers_data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch papers data: {str(e)}")
+
+
+@app.get("/papers/{paper_id}", response_model=Paper)
+async def get_paper_by_id(paper_id: str):
+    """Get a specific paper record by ID"""
+    try:
+        if not ObjectId.is_valid(paper_id):
+            raise HTTPException(status_code=400, detail="Invalid paper ID format")
+        
+        collection = db.papers
+        doc = collection.find_one({"_id": ObjectId(paper_id)})
+        
+        if not doc:
+            raise HTTPException(status_code=404, detail="Paper record not found")
+        
+        # Convert ObjectId to string
+        doc["id"] = str(doc.pop("_id"))
+        
+        # Convert datetime objects to ISO format strings if they exist
+        if "createdAt" in doc and doc["createdAt"]:
+            doc["createdAt"] = doc["createdAt"].isoformat()
+        if "updatedAt" in doc and doc["updatedAt"]:
+            doc["updatedAt"] = doc["updatedAt"].isoformat()
+        
+        return doc
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch paper data: {str(e)}")
 
 
 if __name__ == "__main__":

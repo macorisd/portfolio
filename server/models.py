@@ -32,3 +32,38 @@ class WorkExperience(BaseModel):
     positions: List[Position] = []
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
+
+
+class Author(BaseModel):
+    name: str
+    url: Optional[str] = None
+
+
+class Venue(BaseModel):
+    name: str
+    url: Optional[str] = None
+
+
+class Group(BaseModel):
+    name: str
+    url: Optional[str] = None
+
+
+class CustomButton(BaseModel):
+    text: str
+    color: str
+    url: str
+
+
+class Paper(BaseModel):
+    id: str
+    title: str
+    date: str
+    venue: Venue
+    authors: List[Author] = []
+    group: Optional[Group] = None
+    abstract: str
+    pdfUrl: str
+    customButtons: Optional[List[CustomButton]] = []
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
