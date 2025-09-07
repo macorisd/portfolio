@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Macorís Decena',
   tagline: 'My Portfolio',
-  favicon: 'img/favicon.ico',
+  favicon: 'https://res.cloudinary.com/dxkdg3b2l/image/upload/v1757251914/favicon_jtjl3z.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
