@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCachedData, setCachedData, hasCachedData } from '../lib/cache';
+import { API_BASE_URL } from '../config/api';
 
-const API_BASE_URL = 'http://localhost:8000';
 const CACHE_KEY = 'workExperience';
 
 export const useWorkExperience = () => {
