@@ -79,12 +79,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/profile.jpg',
+      image: 'https://res.cloudinary.com/dxkdg3b2l/image/upload/v1757086031/profile_dt2lft.jpg',
       navbar: {
         title: 'Macorís Decena',
         logo: {
           alt: 'Your Logo',
-          src: 'img/profile.jpg',
+          src: 'https://res.cloudinary.com/dxkdg3b2l/image/upload/v1757086031/profile_dt2lft.jpg',
         },
         items: [
           { to: '/education', label: 'Education', position: 'left' },
