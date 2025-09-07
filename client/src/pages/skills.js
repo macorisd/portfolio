@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from '../css/skills.module.css';
 import useSkills from '../hooks/useSkills';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 const SkillTag = ({ skill, isAdvanced }) => {
   return (
@@ -76,15 +77,18 @@ const SkillCategory = ({ title, skills }) => {
 
 export default function Skills() {
   const { skills, loading, error } = useSkills();
+  const showLoadingText = useDelayedLoading(loading);
 
   if (loading) {
     return (
       <Layout title="Skills" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Technical Skills</h1>
-          <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <p>Loading skills data...</p>
-          </div>
+          {showLoadingText && (
+            <div className="loadingText">
+              <p>Loading skills data...</p>
+            </div>
+          )}
         </main>
       </Layout>
     );

@@ -2,20 +2,22 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from '../css/education.module.css';
 import useEducation from '../hooks/useEducation';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 export default function Education() {
   const { education, loading, error } = useEducation();
+  const showLoadingText = useDelayedLoading(loading);
 
   if (loading) {
     return (
       <Layout title="Education" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Education</h1>
-          <div className={styles.timeline}>
-            <div style={{ textAlign: 'center', padding: '2rem' }}>
+          {showLoadingText && (
+            <div className="loadingText">
               <p>Loading education data...</p>
             </div>
-          </div>
+          )}
         </main>
       </Layout>
     );

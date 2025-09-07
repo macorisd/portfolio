@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from '../css/projects.module.css';
 import useProjects from '../hooks/useProjects';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 function ProjectCard({ project }) {
   const handleCardClick = () => {
@@ -30,15 +31,18 @@ function ProjectCard({ project }) {
 
 export default function Projects() {
   const { projects, loading, error } = useProjects();
+  const showLoadingText = useDelayedLoading(loading);
 
   if (loading) {
     return (
       <Layout title="Projects" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Featured Projects</h1>
-          <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <p>Loading projects...</p>
-          </div>
+          {showLoadingText && (
+            <div className="loadingText">
+              <p>Loading projects...</p>
+            </div>
+          )}
         </main>
       </Layout>
     );

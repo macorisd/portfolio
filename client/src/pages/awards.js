@@ -3,10 +3,12 @@ import Layout from '@theme/Layout';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl'; // usamos el hook una sola vez
 import styles from '../css/awards.module.css';
 import { useAwards } from '../hooks/useAwards';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 export default function Awards() {
   const [selectedImage, setSelectedImage] = useState(null);
   const { awards, loading, error } = useAwards();
+  const showLoadingText = useDelayedLoading(loading);
 
   // Llama al hook una vez y usa la utilidad "plana" dentro del map
   const { withBaseUrl } = useBaseUrlUtils();
@@ -40,7 +42,11 @@ export default function Awards() {
       <Layout title="Awards & Achievements" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Awards & Achievements</h1>
-          <div className={styles.loading}>Loading awards...</div>
+          {showLoadingText && (
+            <div className="loadingText">
+              <p>Loading awards...</p>
+            </div>
+          )}
         </main>
       </Layout>
     );

@@ -2,18 +2,22 @@ import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from '../css/index.module.css';
 import useIndexData from '../hooks/useIndexData';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 export default function Home() {
   const { indexData, loading, error } = useIndexData();
+  const showLoadingText = useDelayedLoading(loading);
 
   if (loading) {
     return (
       <Layout noFooter>
         <div className={styles.container}>
           <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
-            <div style={{ textAlign: 'center', padding: '2rem' }}>
-              <p>Loading...</p>
-            </div>
+            {showLoadingText && (
+              <div className="loadingText">
+                <p>Loading...</p>
+              </div>
+            )}
           </main>
         </div>
       </Layout>

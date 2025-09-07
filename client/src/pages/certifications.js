@@ -2,9 +2,11 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from '../css/certifications.module.css';
 import useCertifications from '../hooks/useCertifications';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 export default function Certifications() {
   const { certifications, loading, error } = useCertifications();
+  const showLoadingText = useDelayedLoading(loading);
 
   const handleCardClick = (url) => {
     if (url) {
@@ -37,9 +39,11 @@ export default function Certifications() {
       <Layout title="Certifications" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Certifications</h1>
-          <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <p>Loading certifications data...</p>
-          </div>
+          {showLoadingText && (
+            <div className="loadingText">
+              <p>Loading certifications data...</p>
+            </div>
+          )}
         </main>
       </Layout>
     );

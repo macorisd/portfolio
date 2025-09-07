@@ -3,20 +3,22 @@ import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from '../css/papers.module.css';
 import usePapers from '../hooks/usePapers';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 export default function Papers() {
   const { papers, loading, error } = usePapers();
+  const showLoadingText = useDelayedLoading(loading);
 
   if (loading) {
     return (
       <Layout title="Published Papers" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Published Papers</h1>
-          <div className={styles.cardContainer}>
-            <div style={{ textAlign: 'center', padding: '2rem' }}>
+          {showLoadingText && (
+            <div className="loadingText">
               <p>Loading papers data...</p>
             </div>
-          </div>
+          )}
         </main>
       </Layout>
     );

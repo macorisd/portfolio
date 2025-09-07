@@ -2,20 +2,22 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from '../css/work-experience.module.css';
 import useWorkExperience from '../hooks/useWorkExperience';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 export default function WorkExperience() {
   const { workExperience, loading, error } = useWorkExperience();
+  const showLoadingText = useDelayedLoading(loading);
 
   if (loading) {
     return (
       <Layout title="Work Experience" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Work Experience</h1>
-          <div className={styles.timeline}>
-            <div style={{ textAlign: 'center', padding: '2rem' }}>
+          {showLoadingText && (
+            <div className="loadingText">
               <p>Loading work experience data...</p>
             </div>
-          </div>
+          )}
         </main>
       </Layout>
     );
