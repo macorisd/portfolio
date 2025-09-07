@@ -29,6 +29,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'macorisd', // Usually your GitHub org/user name.
   projectName: 'portfolio', // Usually your repo name.
+  trailingSlash: false, // Important for GitHub Pages
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
