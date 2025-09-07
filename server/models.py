@@ -105,3 +105,27 @@ class Skills(BaseModel):
     categories: dict[str, List[Skill]]  # categories es un diccionario con listas de skills
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
+
+
+class NewsButton(BaseModel):
+    text: str
+    url: str
+    color: str
+
+
+class NewsItem(BaseModel):
+    title: str
+    img: str
+    date: str
+    description: str
+    buttons: List[NewsButton] = []
+
+
+class IndexData(BaseModel):
+    id: str
+    img: str
+    description: str
+    currently: str
+    news: List[NewsItem] = []
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
