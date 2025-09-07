@@ -31,8 +31,9 @@ export default function Contact() {
       <main className={styles.container}>
         <h1 className={styles.pageTitle}>Contact Me</h1>
         
-        <div className={styles.grid}>
-          {contacts.map((contact, index) => (
+        <div className="contentFadeIn">
+          <div className={styles.grid}>
+            {contacts.map((contact, index) => (
             <div 
               key={index} 
               className={styles.card}
@@ -60,10 +61,11 @@ export default function Contact() {
           ))}
         </div>
 
-        <div className={styles.messageSection}>
-          <p className={styles.message}>
-            Feel free to reach out to me through any of the above channels. I look forward to connecting with you!
-          </p>
+          <div className={styles.messageSection}>
+            <p className={styles.message}>
+              Feel free to reach out to me through any of the above channels. I look forward to connecting with you!
+            </p>
+          </div>
         </div>
       </main>
     </Layout>
