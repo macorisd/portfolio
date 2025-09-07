@@ -16,6 +16,10 @@ from common_methods import get_sorting_key_for_date
 # Load environment variables
 load_dotenv()
 
+# MongoDB configuration
+MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
+DATABASE_NAME = os.getenv("DATABASE_NAME", "portfolio")
+
 # Global MongoDB client
 mongodb_client = None
 db = None
@@ -57,10 +61,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# MongoDB configuration
-MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
-DATABASE_NAME = os.getenv("DATABASE_NAME", "portfolio")
-
 
 @app.get("/")
 async def root():
@@ -71,7 +71,10 @@ async def root():
 async def health_check():
     try:
         # Test database connection
-        db.command('ping')
+        if mongodb_client is None:
+            raise HTTPException(status_code=503, detail="Database client not initialized")
+        
+        mongodb_client.admin.command('ping')
         return {"status": "healthy", "database": "connected"}
     except Exception as e:
         raise HTTPException(status_code=503, detail=f"Database connection failed: {str(e)}")
