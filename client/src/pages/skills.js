@@ -1,62 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import styles from '../css/skills.module.css';
-
-const skillsData = {
-  'Programming Languages': [
-    { name: 'Python', advanced: true },
-    { name: 'Java', advanced: true },
-    { name: 'C++', advanced: false },
-    { name: 'C', advanced: false },
-    { name: 'C#', advanced: false },
-    { name: 'JavaScript', advanced: false },
-    { name: 'R', advanced: false },
-    { name: 'Haskell', advanced: false },
-  ],
-  'Preferred Fields': [
-    { name: 'Artificial Intelligence', advanced: true },
-    { name: 'Computer Vision', advanced: true },
-    { name: 'Backend Development', advanced: true },
-    { name: 'Generative AI', advanced: true },
-    { name: 'Robotics', advanced: false },
-    { name: 'Frontend Development', advanced: false },
-  ],
-  'Web Development': [
-    { name: 'FastAPI', advanced: true },
-    { name: 'Spring Boot', advanced: true },
-    { name: 'HTML5', advanced: false },
-    { name: 'CSS3', advanced: false },
-    { name: 'Node.js', advanced: false },
-    { name: 'React', advanced: false },
-  ],
-  'Tools & Technologies': [
-    { name: 'Git', advanced: true },
-    { name: 'transformers (HuggingFace)', advanced: true },
-    { name: 'VS Code', advanced: true },
-    { name: 'Vercel', advanced: true },
-    { name: 'Jupyter Notebook', advanced: true },
-    { name: 'Linux', advanced: true },
-    { name: 'Android Studio', advanced: true },
-    { name: 'Docker', advanced: false },
-    { name: 'Kubernetes', advanced: false },
-    { name: 'ROS2', advanced: false },
-    { name: 'Unity', advanced: false },
-  ],
-  'Databases': [
-    { name: 'MongoDB', advanced: true },
-    { name: 'MySQL', advanced: false },
-    { name: 'SQLite', advanced: false },
-  ],
-  'Soft Skills': [
-    { name: 'Problem Solving', advanced: true },
-    { name: 'Responsibility & Commitment', advanced: true },
-    { name: 'Creativity', advanced: true },
-    { name: 'Technical Writing', advanced: true },
-    { name: 'Teamwork', advanced: true },
-    { name: 'Communication', advanced: false },
-    { name: 'Adaptability', advanced: false },
-  ],
-};
+import useSkills from '../hooks/useSkills';
 
 const SkillTag = ({ skill, isAdvanced }) => {
   return (
@@ -130,14 +75,56 @@ const SkillCategory = ({ title, skills }) => {
 };
 
 export default function Skills() {
+  const { skills, loading, error } = useSkills();
+
+  if (loading) {
+    return (
+      <Layout title="Skills">
+        <main className={styles.container}>
+          <h1 className={styles.pageTitle}>Technical Skills</h1>
+          <div style={{ textAlign: 'center', padding: '2rem' }}>
+            <p>Loading skills data...</p>
+          </div>
+        </main>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout title="Skills">
+        <main className={styles.container}>
+          <h1 className={styles.pageTitle}>Technical Skills</h1>
+          <div style={{ textAlign: 'center', padding: '2rem', color: '#ff6b6b' }}>
+            <p>Error loading skills data: {error}</p>
+            <p>Please try again later.</p>
+          </div>
+        </main>
+      </Layout>
+    );
+  }
+
+  if (!skills || !skills.categories) {
+    return (
+      <Layout title="Skills">
+        <main className={styles.container}>
+          <h1 className={styles.pageTitle}>Technical Skills</h1>
+          <div style={{ textAlign: 'center', padding: '2rem' }}>
+            <p>No skills data available.</p>
+          </div>
+        </main>
+      </Layout>
+    );
+  }
+
   return (
     <Layout title="Skills">
       <main className={styles.container}>
         <h1 className={styles.pageTitle}>Technical Skills</h1>
         
         <div className={styles.skillsContainer}>
-          {Object.entries(skillsData).map(([category, skills]) => (
-            <SkillCategory key={category} title={category} skills={skills} />
+          {Object.entries(skills.categories).map(([category, categorySkills]) => (
+            <SkillCategory key={category} title={category} skills={categorySkills} />
           ))}
         </div>
       </main>

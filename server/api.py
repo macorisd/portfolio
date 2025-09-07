@@ -10,7 +10,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 
 # Import local modules
-from models import Education, WorkExperience, Paper, Certification, Award
+from models import Education, WorkExperience, Paper, Certification, Award, Skills
 from common_methods import get_sorting_key_for_date
 
 # Load environment variables
@@ -432,6 +432,27 @@ async def get_award_by_id(award_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch award data: {str(e)}")
+
+
+@app.get("/skills", response_model=Skills)
+async def get_skills():
+    """Get the skills data from MongoDB"""
+    try:
+        collection = db.skills
+        doc = collection.find_one()
+        
+        if not doc:
+            raise HTTPException(status_code=404, detail="Skills data not found")
+        
+        # Convert ObjectId to string
+        doc['id'] = str(doc['_id'])
+        del doc['_id']
+        
+        return doc
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch skills data: {str(e)}")
 
 
 if __name__ == "__main__":

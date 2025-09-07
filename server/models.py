@@ -93,3 +93,15 @@ class Award(BaseModel):
     image: Optional[str] = None
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
+
+
+class Skill(BaseModel):
+    name: str
+    advanced: bool
+
+
+class Skills(BaseModel):
+    id: str
+    categories: dict[str, List[Skill]]  # categories es un diccionario con listas de skills
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
