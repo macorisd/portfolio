@@ -1,13 +1,15 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure
+from pymongo.errors import ConnectionFailure, PyMongoError, ServerSelectionTimeoutError
 from bson import ObjectId
 from typing import List
 import os
 from dotenv import load_dotenv
 import uvicorn
 from contextlib import asynccontextmanager
+import traceback
+import certifi
 
 # Import local modules
 from models import Education, WorkExperience, Paper, Certification, Award, Skills, IndexData, Project
@@ -24,26 +26,32 @@ DATABASE_NAME = os.getenv("DATABASE_NAME", "portfolio")
 mongodb_client = None
 db = None
 
+def build_client():
+    kwargs = {
+        "serverSelectionTimeoutMS": 7000,
+        "connectTimeoutMS": 7000,
+        "tlsCAFile": certifi.where(),  # <- clave en serverless
+    }
+    # Si usas mongodb+srv, TLS ya viene por defecto, pero no estorba pasar CA.
+    return MongoClient(MONGODB_URI, **kwargs)
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
     global mongodb_client, db
     try:
-        mongodb_client = MongoClient(MONGODB_URI)
-        # Test the connection
-        mongodb_client.admin.command('ping')
+        mongodb_client = build_client()
+        mongodb_client.admin.command("ping")
         db = mongodb_client[DATABASE_NAME]
-        print(f"Connected to MongoDB at {MONGODB_URI}")
-    except ConnectionFailure as e:
-        print(f"Failed to connect to MongoDB: {e}")
-        raise HTTPException(status_code=500, detail="Database connection failed")
-    
+        print(f"[Mongo INIT] OK to {MONGODB_URI}")
+    except PyMongoError as e:
+        print(f"[Mongo INIT] FAILED: {repr(e)}")
+        mongodb_client = None
+        db = None
     yield
-    
-    # Shutdown
     if mongodb_client:
         mongodb_client.close()
-        print("Disconnected from MongoDB")
+        print("[Mongo] Disconnected")
+
 
 app = FastAPI(
     title="Portfolio API", 
@@ -67,17 +75,31 @@ async def root():
     return {"message": "Portfolio API is running"}
 
 
+@app.get("/diag")
+async def diag():
+    return {
+        "has_uri": bool(MONGODB_URI),
+        "uri_scheme": MONGODB_URI.split("://", 1)[0] if MONGODB_URI else None,
+        "db_name": DATABASE_NAME,
+    }
+
 @app.get("/health")
 async def health_check():
+    if mongodb_client is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Mongo client not initialized (check env, dnspython/certifi, allowlist)"
+        )
     try:
-        # Test database connection
-        if mongodb_client is None:
-            raise HTTPException(status_code=503, detail="Database client not initialized")
-        
-        mongodb_client.admin.command('ping')
+        mongodb_client.admin.command("ping")
         return {"status": "healthy", "database": "connected"}
-    except Exception as e:
-        raise HTTPException(status_code=503, detail=f"Database connection failed: {str(e)}")
+    except ServerSelectionTimeoutError as e:
+        tb = traceback.format_exc(limit=2)
+        raise HTTPException(status_code=503, detail=f"ServerSelectionTimeoutError: {repr(e)} | {tb}")
+    except PyMongoError as e:
+        tb = traceback.format_exc(limit=2)
+        raise HTTPException(status_code=503, detail=f"PyMongoError: {repr(e)} | {tb}")
+
 
 
 @app.get("/education", response_model=List[Education])
