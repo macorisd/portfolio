@@ -22,6 +22,8 @@ load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "portfolio")
 
+INIT_ERROR = None
+
 # Global MongoDB client
 mongodb_client = None
 db = None
@@ -37,20 +39,25 @@ def build_client():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global mongodb_client, db
+    global mongodb_client, db, INIT_ERROR
     try:
-        mongodb_client = build_client()
+        mongodb_client = MongoClient(
+            MONGODB_URI,
+            serverSelectionTimeoutMS=7000,
+            connectTimeoutMS=7000
+        )
         mongodb_client.admin.command("ping")
         db = mongodb_client[DATABASE_NAME]
+        INIT_ERROR = None
         print(f"[Mongo INIT] OK to {MONGODB_URI}")
     except PyMongoError as e:
-        print(f"[Mongo INIT] FAILED: {repr(e)}")
+        INIT_ERROR = repr(e)  # <- guardamos el error textual
         mongodb_client = None
         db = None
+        print(f"[Mongo INIT] FAILED: {INIT_ERROR}")
     yield
     if mongodb_client:
         mongodb_client.close()
-        print("[Mongo] Disconnected")
 
 
 app = FastAPI(
@@ -88,17 +95,14 @@ async def health_check():
     if mongodb_client is None:
         raise HTTPException(
             status_code=503,
-            detail="Mongo client not initialized (check env, dnspython/certifi, allowlist)"
+            detail=f"Mongo client not initialized. Last init error: {INIT_ERROR}"
         )
     try:
-        mongodb_client.admin.command("ping")
+        mongodb_client.admin.command('ping')
         return {"status": "healthy", "database": "connected"}
-    except ServerSelectionTimeoutError as e:
-        tb = traceback.format_exc(limit=2)
-        raise HTTPException(status_code=503, detail=f"ServerSelectionTimeoutError: {repr(e)} | {tb}")
-    except PyMongoError as e:
-        tb = traceback.format_exc(limit=2)
-        raise HTTPException(status_code=503, detail=f"PyMongoError: {repr(e)} | {tb}")
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Ping failed: {repr(e)}")
+
 
 
 
