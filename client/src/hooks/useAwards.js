@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { getCachedData, setCachedData, hasCachedData } from '../lib/cache';
 
 const API_BASE_URL = 'http://localhost:8000';
+const CACHE_KEY = 'awards';
 
 export const useAwards = () => {
   const [awards, setAwards] = useState([]);
@@ -8,6 +10,14 @@ export const useAwards = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Check if data is already cached
+    if (hasCachedData(CACHE_KEY)) {
+      const cachedData = getCachedData(CACHE_KEY);
+      setAwards(cachedData);
+      setLoading(false);
+      return;
+    }
+
     const fetchAwards = async () => {
       try {
         setLoading(true);
@@ -20,6 +30,9 @@ export const useAwards = () => {
         const data = await response.json();
         setAwards(data);
         setError(null);
+        
+        // Cache the data
+        setCachedData(CACHE_KEY, data);
       } catch (err) {
         console.error('Error fetching awards data:', err);
         setError(err.message);

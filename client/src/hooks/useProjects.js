@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { getCachedData, setCachedData, hasCachedData } from '../lib/cache';
 
 const API_BASE_URL = 'http://localhost:8000';
+const CACHE_KEY = 'projects';
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -8,6 +10,14 @@ export const useProjects = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Check if data is already cached
+    if (hasCachedData(CACHE_KEY)) {
+      const cachedData = getCachedData(CACHE_KEY);
+      setProjects(cachedData);
+      setLoading(false);
+      return;
+    }
+
     const fetchProjects = async () => {
       try {
         setLoading(true);
@@ -22,6 +32,9 @@ export const useProjects = () => {
         const sortedProjects = data.sort((a, b) => b.order - a.order);
         setProjects(sortedProjects);
         setError(null);
+        
+        // Cache the data
+        setCachedData(CACHE_KEY, sortedProjects);
       } catch (err) {
         console.error('Error fetching projects data:', err);
         setError(err.message);

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { getCachedData, setCachedData, hasCachedData } from '../lib/cache';
 
 const API_BASE_URL = 'http://localhost:8000';
+const CACHE_KEY = 'indexData';
 
 export const useIndexData = () => {
   const [indexData, setIndexData] = useState(null);
@@ -8,6 +10,14 @@ export const useIndexData = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Check if data is already cached
+    if (hasCachedData(CACHE_KEY)) {
+      const cachedData = getCachedData(CACHE_KEY);
+      setIndexData(cachedData);
+      setLoading(false);
+      return;
+    }
+
     const fetchIndexData = async () => {
       try {
         setLoading(true);
@@ -20,6 +30,9 @@ export const useIndexData = () => {
         const data = await response.json();
         setIndexData(data);
         setError(null);
+        
+        // Cache the data
+        setCachedData(CACHE_KEY, data);
       } catch (err) {
         console.error('Error fetching index data:', err);
         setError(err.message);
