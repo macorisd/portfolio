@@ -79,7 +79,7 @@ export default function Projects() {
     <Layout title="Projects">
       <main className={styles.container}>
         <h1 className={styles.pageTitle}>Featured Projects</h1>
-        <div className={styles.grid}>
+        <div className={`${styles.grid} contentFadeIn`}>
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

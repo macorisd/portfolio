@@ -67,7 +67,7 @@ export default function Awards() {
     <Layout title="Awards & Achievements">
       <main className={styles.timelineContainer}>
         <h1 className={styles.pageTitle}>Awards & Achievements</h1>
-        <div className={styles.timeline}>
+        <div className={`${styles.timeline} contentFadeIn`}>
           {processedAwards.map((award) => (
             <div key={award.id} className={styles.timelineItem}>
               <div className={styles.timelineDot} />

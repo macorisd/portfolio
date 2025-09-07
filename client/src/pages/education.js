@@ -43,7 +43,7 @@ export default function Education() {
     <Layout title="Education">
       <main className={styles.timelineContainer}>
         <h1 className={styles.pageTitle}>Education</h1>
-        <div className={styles.timeline}>
+        <div className={`${styles.timeline} contentFadeIn`}>
           {education.map((study, index) => (
             <div key={study.id || index} className={styles.timelineItem}>
               <div className={styles.timelineDot} />

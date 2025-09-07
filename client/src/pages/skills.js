@@ -125,8 +125,7 @@ export default function Skills() {
     <Layout title="Skills">
       <main className={styles.container}>
         <h1 className={styles.pageTitle}>Technical Skills</h1>
-        
-        <div className={styles.skillsContainer}>
+        <div className={`${styles.skillsContainer} contentFadeIn`}>
           {Object.entries(skills.categories).map(([category, categorySkills]) => (
             <SkillCategory key={category} title={category} skills={categorySkills} />
           ))}

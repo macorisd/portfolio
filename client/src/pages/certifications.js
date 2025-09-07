@@ -76,28 +76,29 @@ export default function Certifications() {
     <Layout title="Certifications">
       <main className={styles.container}>
         <h1 className={styles.pageTitle}>Certifications</h1>
-        
-        {featuredCerts.length > 0 && (
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Featured Certifications</h2>
-            <div className={styles.cardContainer}>
-              {featuredCerts.map((certification, index) => (
+        <div className="contentFadeIn">
+          {featuredCerts.length > 0 && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>Featured Certifications</h2>
+              <div className={styles.cardContainer}>
+                {featuredCerts.map((certification, index) => (
                 <CertificationCard key={certification.id || index} certification={certification} />
               ))}
             </div>
           </section>
         )}
 
-        {moreCerts.length > 0 && (
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>More Certifications</h2>
-            <div className={styles.cardContainer}>
-              {moreCerts.map((certification, index) => (
-                <CertificationCard key={certification.id || index} certification={certification} />
-              ))}
-            </div>
-          </section>
-        )}
+          {moreCerts.length > 0 && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>More Certifications</h2>
+              <div className={styles.cardContainer}>
+                {moreCerts.map((certification, index) => (
+                  <CertificationCard key={certification.id || index} certification={certification} />
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
       </main>
     </Layout>
   );

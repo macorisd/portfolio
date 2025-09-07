@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <Layout>
       <div className={styles.container}>
-        <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
+        <main className="contentFadeIn" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
           <img
             src={indexData.img}
             alt="Macorís Decena"

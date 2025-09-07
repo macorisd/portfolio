@@ -43,7 +43,7 @@ export default function WorkExperience() {
     <Layout title="Work Experience">
       <main className={styles.timelineContainer}>
         <h1 className={styles.pageTitle}>Work Experience</h1>
-        <div className={styles.timeline}>
+        <div className={`${styles.timeline} contentFadeIn`}>
           {workExperience.map((company, index) => (
             <div key={company.id || index} className={styles.companySection}>
               {company.url ? (

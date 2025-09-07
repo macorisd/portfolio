@@ -44,7 +44,7 @@ export default function Papers() {
     <Layout title="Published Papers">
       <main className={styles.container}>
         <h1 className={styles.pageTitle}>Published Papers</h1>
-        <div className={styles.cardContainer}>
+        <div className={`${styles.cardContainer} contentFadeIn`}>
           {papers.map((paper, idx) => (
             <div key={paper.id || idx} className={styles.card}>
               <div className={styles.cardContent}>
