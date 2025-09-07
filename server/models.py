@@ -129,3 +129,15 @@ class IndexData(BaseModel):
     news: List[NewsItem] = []
     createdAt: Optional[datetime] = None
     updatedAt: Optional[datetime] = None
+
+
+class Project(BaseModel):
+    id: str
+    title: str
+    image: str
+    description: str
+    finished: bool
+    githubUrl: str
+    order: int
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None

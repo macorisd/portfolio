@@ -10,7 +10,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 
 # Import local modules
-from models import Education, WorkExperience, Paper, Certification, Award, Skills, IndexData
+from models import Education, WorkExperience, Paper, Certification, Award, Skills, IndexData, Project
 from common_methods import get_sorting_key_for_date
 
 # Load environment variables
@@ -474,6 +474,23 @@ async def get_index_data():
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch index data: {str(e)}")
+
+
+@app.get("/projects", response_model=List[Project])
+async def get_projects():
+    """Get all projects from MongoDB"""
+    try:
+        collection = db.projects
+        docs = list(collection.find())
+        
+        # Convert ObjectId to string for each document
+        for doc in docs:
+            doc['id'] = str(doc['_id'])
+            del doc['_id']
+        
+        return docs
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch projects data: {str(e)}")
 
 
 if __name__ == "__main__":
