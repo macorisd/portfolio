@@ -9,7 +9,7 @@ export default function Papers() {
 
   if (loading) {
     return (
-      <Layout title="Published Papers">
+      <Layout title="Published Papers" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Published Papers</h1>
           <div className={styles.cardContainer}>
@@ -24,7 +24,7 @@ export default function Papers() {
 
   if (error) {
     return (
-      <Layout title="Published Papers">
+      <Layout title="Published Papers" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Published Papers</h1>
           <div className={styles.cardContainer}>

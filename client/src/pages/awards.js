@@ -37,7 +37,7 @@ export default function Awards() {
 
   if (loading) {
     return (
-      <Layout title="Awards & Achievements">
+      <Layout title="Awards & Achievements" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Awards & Achievements</h1>
           <div className={styles.loading}>Loading awards...</div>
@@ -48,7 +48,7 @@ export default function Awards() {
 
   if (error) {
     return (
-      <Layout title="Awards & Achievements">
+      <Layout title="Awards & Achievements" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Awards & Achievements</h1>
           <div className={styles.error}>Error loading awards: {error}</div>

@@ -8,7 +8,7 @@ export default function WorkExperience() {
 
   if (loading) {
     return (
-      <Layout title="Work Experience">
+      <Layout title="Work Experience" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Work Experience</h1>
           <div className={styles.timeline}>
@@ -23,7 +23,7 @@ export default function WorkExperience() {
 
   if (error) {
     return (
-      <Layout title="Work Experience">
+      <Layout title="Work Experience" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Work Experience</h1>
           <div className={styles.timeline}>

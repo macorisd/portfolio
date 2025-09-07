@@ -33,7 +33,7 @@ export default function Projects() {
 
   if (loading) {
     return (
-      <Layout title="Projects">
+      <Layout title="Projects" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Featured Projects</h1>
           <div style={{ textAlign: 'center', padding: '2rem' }}>
@@ -46,7 +46,7 @@ export default function Projects() {
 
   if (error) {
     return (
-      <Layout title="Projects">
+      <Layout title="Projects" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Featured Projects</h1>
           <div style={{ textAlign: 'center', padding: '2rem', color: '#ff6b6b' }}>
@@ -60,7 +60,7 @@ export default function Projects() {
 
   if (!projects || projects.length === 0) {
     return (
-      <Layout title="Projects">
+      <Layout title="Projects" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Featured Projects</h1>
           <div style={{ textAlign: 'center', padding: '2rem' }}>

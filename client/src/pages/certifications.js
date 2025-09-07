@@ -34,7 +34,7 @@ export default function Certifications() {
 
   if (loading) {
     return (
-      <Layout title="Certifications">
+      <Layout title="Certifications" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Certifications</h1>
           <div style={{ textAlign: 'center', padding: '2rem' }}>
@@ -47,7 +47,7 @@ export default function Certifications() {
 
   if (error) {
     return (
-      <Layout title="Certifications">
+      <Layout title="Certifications" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Certifications</h1>
           <div style={{ textAlign: 'center', padding: '2rem', color: '#ff6b6b' }}>

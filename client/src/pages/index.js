@@ -8,7 +8,7 @@ export default function Home() {
 
   if (loading) {
     return (
-      <Layout>
+      <Layout noFooter>
         <div className={styles.container}>
           <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
             <div style={{ textAlign: 'center', padding: '2rem' }}>
@@ -22,7 +22,7 @@ export default function Home() {
 
   if (error) {
     return (
-      <Layout>
+      <Layout noFooter>
         <div className={styles.container}>
           <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
             <div style={{ textAlign: 'center', padding: '2rem', color: '#ff6b6b' }}>
@@ -37,7 +37,7 @@ export default function Home() {
 
   if (!indexData) {
     return (
-      <Layout>
+      <Layout noFooter>
         <div className={styles.container}>
           <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
             <div style={{ textAlign: 'center', padding: '2rem' }}>

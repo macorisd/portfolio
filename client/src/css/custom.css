@@ -36,3 +36,8 @@
   height: 35px;
   object-fit: cover;
 }
+
+/* Prevent layout shift by always showing scrollbar space */
+html {
+  overflow-y: scroll;
+}

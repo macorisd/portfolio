@@ -79,7 +79,7 @@ export default function Skills() {
 
   if (loading) {
     return (
-      <Layout title="Skills">
+      <Layout title="Skills" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Technical Skills</h1>
           <div style={{ textAlign: 'center', padding: '2rem' }}>
@@ -92,7 +92,7 @@ export default function Skills() {
 
   if (error) {
     return (
-      <Layout title="Skills">
+      <Layout title="Skills" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Technical Skills</h1>
           <div style={{ textAlign: 'center', padding: '2rem', color: '#ff6b6b' }}>
@@ -106,7 +106,7 @@ export default function Skills() {
 
   if (!skills || !skills.categories) {
     return (
-      <Layout title="Skills">
+      <Layout title="Skills" noFooter>
         <main className={styles.container}>
           <h1 className={styles.pageTitle}>Technical Skills</h1>
           <div style={{ textAlign: 'center', padding: '2rem' }}>

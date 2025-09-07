@@ -8,7 +8,7 @@ export default function Education() {
 
   if (loading) {
     return (
-      <Layout title="Education">
+      <Layout title="Education" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Education</h1>
           <div className={styles.timeline}>
@@ -23,7 +23,7 @@ export default function Education() {
 
   if (error) {
     return (
-      <Layout title="Education">
+      <Layout title="Education" noFooter>
         <main className={styles.timelineContainer}>
           <h1 className={styles.pageTitle}>Education</h1>
           <div className={styles.timeline}>
