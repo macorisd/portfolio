@@ -34,14 +34,17 @@ def parse_date_string(date_str: str) -> Tuple[int, int]:
 def get_sorting_key_for_date(date_str: str, is_current: bool = False) -> Tuple[int, int]:
     """
     Get sorting key for a date string. Returns negative values for descending sort.
-    If is_current is True, gives maximum priority.
+    If is_current is True, gives priority but still sorts by start date (most recent first).
     """
-    if is_current:
-        year, month = parse_date_string(date_str) if date_str else (0, 0)
-        return (-9999, -month)  # Maximum priority for current items
+    year, month = parse_date_string(date_str) if date_str else (0, 0)
     
-    year, month = parse_date_string(date_str)
+    if is_current:
+        # Current items get priority (negative year offset) but still sort by actual start date
+        # More recent start dates (higher year/month) should come first
+        return (-9999, -year * 100 - month)  # e.g., Nov 2025 = -202511, Oct 2025 = -202510
+    
     if year == 0 and month == 0:
         return (0, 0)  # Lowest priority for invalid dates
     
     return (-year, -month)  # Negative for descending order
+
