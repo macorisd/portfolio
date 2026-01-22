@@ -9,14 +9,12 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 4rem;
-  background: linear-gradient(
-    90deg,
-    #67b99a 0%,
-    #6fc267 25%,
-    #248277 50%,
-    #56ab91 75%,
-    #67b99a 100%
-  );
+  background: linear-gradient(90deg,
+      #67b99a 0%,
+      #6fc267 25%,
+      #248277 50%,
+      #56ab91 75%,
+      #67b99a 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -28,9 +26,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -156,7 +156,7 @@
   }
 
   .timelineDot {
-    left: -20px;
+    left: -18.5px;
     width: 12px;
     height: 12px;
     top: 8px;
@@ -209,7 +209,7 @@
   }
 
   .timelineDot {
-    left: -18px;
+    left: -15.5px;
     width: 10px;
     height: 10px;
   }
