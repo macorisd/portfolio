@@ -128,9 +128,101 @@
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
+  .timelineContainer {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
   .pageTitle {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    padding: 0 1rem;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+
+  .timeline {
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    left: 10px;
+    width: 3px;
+  }
+
+  .companyName {
+    font-size: 1.35rem;
+    margin-left: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .timelineDot {
+    left: -20px;
+    width: 12px;
+    height: 12px;
+    top: 8px;
+  }
+
+  .timelineContent {
+    margin-left: 20px;
+  }
+
+  .positionTitle {
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .techBadge {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 480px) {
+  .timelineContainer {
+    padding: 0.75rem;
+  }
+
+  .pageTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline::before {
+    left: 8px;
+  }
+
+  .companyName {
+    font-size: 1.2rem;
+    margin-left: 16px;
+  }
+
+  .timelineDot {
+    left: -18px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .timelineContent {
+    margin-left: 16px;
+  }
+
+  .positionTitle {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
   }
 }
