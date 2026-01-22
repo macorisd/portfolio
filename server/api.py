@@ -213,6 +213,18 @@ async def get_work_experience():
 
             return best_sorting_key
 
+        # Sort positions within each work item (most recent start date first)
+        def parse_position_date_for_sorting(position):
+            end_date = position.get("end")
+            start_date = position.get("start", "")
+            is_current = not end_date or end_date in [None, "null", ""]
+            return get_sorting_key_for_date(start_date, is_current=is_current)
+
+        for work_item in work_data:
+            positions = work_item.get("positions", [])
+            if positions:
+                positions.sort(key=parse_position_date_for_sorting)
+
         work_data.sort(key=parse_work_date_for_sorting)
         return work_data
     except Exception as e:
